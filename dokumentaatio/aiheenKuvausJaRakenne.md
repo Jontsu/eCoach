@@ -1,6 +1,6 @@
 #### Aihe ja Kuvaus
 
-**Aihe:** e-sport harjoitus työkalu, jossa käyttäjä voi suorittaa peliin (lol, dota, CS, jne) liittyviä ohjaajan luomia harjoitustehtäviä. Pelaaja ja ohjaaja kommunkoi ohjelman välityksellä. Ohjelmassa olevat harjoitustehtävät suoritetaan ohjaajan opastuksella ja määrittelemässä tahdissa.
+**Aihe:** e-sport harjoitustyökalu, jossa käyttäjä voi suorittaa peliin (lol, dota, CS, jne) liittyviä ohjaajan luomia harjoitustehtäviä. Pelaaja ja ohjaaja kommunkoi ohjelman välityksellä. Ohjelmassa olevat harjoitustehtävät suoritetaan ohjaajan opastuksella ja määrittelemässä tahdissa.
 
 **Käyttäjät:** e-sport pelaaja, ohjaaja
 

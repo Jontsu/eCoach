@@ -1,1 +1,1 @@
-# eCoach
+# eCoach - e-sport harjoitustyökalu
