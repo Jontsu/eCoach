@@ -28,3 +28,7 @@
     * harjoituksen avaaminen pelaajalle
     * video linkin jättäminen
     * palautteen antaminen
+
+**Määrittelyvaiheen luokkakaavio**
+
+![Alt text](/home/jo/GitProjects/eCoach/dokumentaatio/Luokkakaavio.png)
