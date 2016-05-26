@@ -31,4 +31,4 @@
 
 **Määrittelyvaiheen luokkakaavio**
 
-![Alt text](/home/jo/GitProjects/eCoach/dokumentaatio/Luokkakaavio.png)
+![Luokkakaavio](eCoach/dokumentaatio/Luokkakaavio.png)
