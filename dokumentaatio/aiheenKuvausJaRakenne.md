@@ -31,4 +31,4 @@
 
 **Määrittelyvaiheen luokkakaavio**
 
-![Luokkakaavio](eCoach/dokumentaatio/Luokkakaavio.png)
+![Luokkakaavio](Luokkakaavio.png)
