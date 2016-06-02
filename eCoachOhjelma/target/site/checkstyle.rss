@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2016</copyright>
     <item>
-      <title>File: 2,
+      <title>File: 5,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -60,7 +60,49 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#ecoach.logiikka.Ohjaaja.java">ecoach/logiikka/Ohjaaja.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ecoach.logiikka.Pelaaja.java">ecoach/logiikka/Pelaaja.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#ecoach.logiikka.HarjoitusLista.java">ecoach/logiikka/HarjoitusLista.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ecoach.logiikka.Henkilo.java">ecoach/logiikka/Henkilo.java</a>
                 </td>
                 <td>
                   0

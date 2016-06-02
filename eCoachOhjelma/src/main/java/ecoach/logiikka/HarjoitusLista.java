@@ -10,7 +10,7 @@ public class HarjoitusLista {
     public HarjoitusLista(String nimi) {
 
         this.nimi = nimi;
-        this.harjoituslista = new ArrayList<Harjoitus>();
+        this.harjoituslista = new ArrayList<>();
     }
 
     public String getNimi() {
@@ -38,5 +38,10 @@ public class HarjoitusLista {
         for (Harjoitus i : this.harjoituslista) {
             System.out.println(i);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Harjoituslista: " + nimi;
     }
 }

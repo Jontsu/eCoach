@@ -1,8 +1,8 @@
 #### Aihe ja Kuvaus
 
-**Aihe:** e-sport harjoitustyökalu, jossa käyttäjä voi suorittaa peliin (lol, dota, CS, jne) liittyviä ohjaajan luomia harjoitustehtäviä. Pelaaja ja ohjaaja kommunkoi ohjelman välityksellä. Ohjelmassa olevat harjoitustehtävät suoritetaan ohjaajan opastuksella ja määrittelemässä tahdissa.
+**Aihe:** League of Legends harjoitustyökalu, jossa käyttäjä voi suorittaa peliin liittyviä ohjaajan luomia harjoitustehtäviä. Pelaaja ja ohjaaja kommunkoi ohjelman välityksellä. Ohjelmassa olevat harjoitustehtävät suoritetaan ohjaajan opastuksella ja määrittelemässä tahdissa.
 
-**Käyttäjät:** e-sport pelaaja, ohjaaja
+**Käyttäjät:** pelaaja, ohjaaja
 
 **Käyttäjien toiminnot:**
 
@@ -12,7 +12,7 @@
     * harjoitussuoritukseen liittyvien tilastojen listaaminen
     * harjoitus palautteen selaaminen
 
-**e-sport pelaajan toiminnot:**
+**pelaajan toiminnot:**
 
     * tilin luominen
     * harjoituksen valitseminen
