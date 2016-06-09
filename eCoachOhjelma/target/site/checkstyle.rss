@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2016</copyright>
     <item>
-      <title>File: 5,
-             Errors: 0,
+      <title>File: 12,
+             Errors: 2,
              Warnings: 0,
              Infos: 0
       </title>
@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ecoach.logiikka.Harjoitus.java">ecoach/logiikka/Harjoitus.java</a>
+                  <a href="${project.url}/checkstyle.html#ecoach.logiikka.henkilo.PelaajaLista.java">ecoach/logiikka/henkilo/PelaajaLista.java</a>
                 </td>
                 <td>
                   0
@@ -60,7 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ecoach.logiikka.Ohjaaja.java">ecoach/logiikka/Ohjaaja.java</a>
+                  <a href="${project.url}/checkstyle.html#ecoach.logiikka.henkilo.Pelaaja.java">ecoach/logiikka/henkilo/Pelaaja.java</a>
                 </td>
                 <td>
                   0
@@ -74,7 +74,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ecoach.logiikka.Pelaaja.java">ecoach/logiikka/Pelaaja.java</a>
+                  <a href="${project.url}/checkstyle.html#ecoach.kayttoliittyma.Sisaankirjautumissivu.java">ecoach/kayttoliittyma/Sisaankirjautumissivu.java</a>
                 </td>
                 <td>
                   0
@@ -88,7 +88,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ecoach.logiikka.HarjoitusLista.java">ecoach/logiikka/HarjoitusLista.java</a>
+                  <a href="${project.url}/checkstyle.html#ecoach.logiikka.henkilo.Ohjaaja.java">ecoach/logiikka/henkilo/Ohjaaja.java</a>
                 </td>
                 <td>
                   0
@@ -102,7 +102,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ecoach.logiikka.Henkilo.java">ecoach/logiikka/Henkilo.java</a>
+                  <a href="${project.url}/checkstyle.html#ecoach.logiikka.harjoitus.Suoritus.java">ecoach/logiikka/harjoitus/Suoritus.java</a>
                 </td>
                 <td>
                   0
@@ -112,6 +112,104 @@ under the License.
                 </td>
                 <td>
                   0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ecoach.logiikka.harjoitus.Harjoitus.java">ecoach/logiikka/harjoitus/Harjoitus.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ecoach.logiikka.harjoitus.SuoritusTilastot.java">ecoach/logiikka/harjoitus/SuoritusTilastot.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ecoach.logiikka.harjoitus.HarjoitusLista.java">ecoach/logiikka/harjoitus/HarjoitusLista.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ecoach.main.Main.java">ecoach/main/Main.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ecoach.logiikka.henkilo.Henkilo.java">ecoach/logiikka/henkilo/Henkilo.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ecoach.kayttoliittyma.OhjaajanPaasivu.java">ecoach/kayttoliittyma/OhjaajanPaasivu.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ecoach.kayttoliittyma.PelaajanPaasivu.java">ecoach/kayttoliittyma/PelaajanPaasivu.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
                 </td>
               </tr>
                       </tbody>

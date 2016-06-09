@@ -1,7 +1,13 @@
-#Thu Jun 02 17:00:57 EEST 2016
-/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/Pelaaja.java=1464868092000
-/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/Harjoitus.java=1464867513000
-/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/HarjoitusLista.java=1464871299000
-/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/Ohjaaja.java=1464868092000
-/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/Henkilo.java=1464868092000
+#Thu Jun 09 22:29:10 EEST 2016
+/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/henkilo/Henkilo.java=1465402608000
+/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/henkilo/Pelaaja.java=1465404761000
+/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/harjoitus/Suoritus.java=1465490185000
+/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/main/Main.java=1465498886000
+/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/kayttoliittyma/OhjaajanPaasivu.java=1465496094000
+/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/henkilo/PelaajaLista.java=1465489536000
+/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/henkilo/Ohjaaja.java=1465404873000
+/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/harjoitus/Harjoitus.java=1465498580000
+/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/kayttoliittyma/Sisaankirjautumissivu.java=1465150580000
+/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/harjoitus/SuoritusTilastot.java=1465488009000
 configuration*?=9EA6E9D7552C1A0B382DE69650A699992528C8FE
+/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/harjoitus/HarjoitusLista.java=1465496484000

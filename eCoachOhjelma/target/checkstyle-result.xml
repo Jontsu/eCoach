@@ -1,13 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="6.11.2">
-<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/HarjoitusLista.java">
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/henkilo/Ohjaaja.java">
 </file>
-<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/Harjoitus.java">
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/henkilo/Henkilo.java">
 </file>
-<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/Ohjaaja.java">
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/henkilo/PelaajaLista.java">
 </file>
-<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/Henkilo.java">
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/henkilo/Pelaaja.java">
 </file>
-<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/Pelaaja.java">
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/harjoitus/HarjoitusLista.java">
+</file>
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/harjoitus/Harjoitus.java">
+</file>
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/harjoitus/Suoritus.java">
+</file>
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/harjoitus/SuoritusTilastot.java">
+</file>
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/kayttoliittyma/Sisaankirjautumissivu.java">
+</file>
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/kayttoliittyma/OhjaajanPaasivu.java">
+</file>
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/kayttoliittyma/PelaajanPaasivu.java">
+<error line="132" column="87" severity="error" message="&apos;{&apos; is not followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="140" column="80" severity="error" message="&apos;{&apos; is not followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+</file>
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/main/Main.java">
 </file>
 </checkstyle>

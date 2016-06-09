@@ -5,5 +5,6 @@
 **Dokumentaatio:**
 * [Aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
 * [Tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
-* [pit-raportti](https://htmlpreview.github.io/?https://github.com/Jontsu/eCoach/blob/master/dokumentaatio/pit-raportti/201606021557/index.html)
-* [checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/Jontsu/eCoach/blob/master/dokumentaatio/checkstyle-raportti/checkstyle_20160602.html)
+* [pit-raportti](https://htmlpreview.github.io/?https://github.com/Jontsu/eCoach/blob/master/dokumentaatio/pit-raportti/201606092237/index.html)
+* [checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/Jontsu/eCoach/blob/master/dokumentaatio/checkstyle-raportti/checkstyle_20160609.html)
+* [javadoc](https://htmlpreview.github.io/?https://github.com/Jontsu/eCoach/blob/master/javadoc/apidocs/index.html)

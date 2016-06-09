@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="4" failures="0" name="ecoach.logiikka.HarjoitusListaTest" time="0.001" errors="0" skipped="0">
+<testsuite tests="4" failures="0" name="ecoach.logiikka.HarjoitusListaTest" time="0.002" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/home/jo/jdk1.8.0_77/jre/lib/amd64"/>
@@ -24,7 +24,7 @@
 "/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="os.name" value="Linux"/>
-    <property name="maven.ext.class.path" value="/home/jo/netbeans-8.1/java/maven-nblib/netbeans-eventspy.jar"/>
+    <property name="maven.ext.class.path" value="/home/jo/netbeans-8.1/java/maven-nblib/netbeans-eventspy.jar:/home/jo/netbeans-8.1/java/maven-nblib/netbeans-eventspy.jar"/>
     <property name="classworlds.conf" value="/home/jo/netbeans-8.1/java/maven/bin/m2.conf"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
     <property name="java.library.path" value="/home/jo/jdk1.8.0_77/jre/lib/amd64:/home/jo/jdk1.8.0_77/jre/lib/i386::/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"/>
@@ -42,7 +42,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/home/jo/jdk1.8.0_77/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/home/jo/netbeans-8.1/java/maven-nblib/netbeans-eventspy.jar test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/home/jo/netbeans-8.1/java/maven-nblib/netbeans-eventspy.jar:/home/jo/netbeans-8.1/java/maven-nblib/netbeans-eventspy.jar test"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -60,8 +60,8 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="ecoach.logiikka.HarjoitusListaTest" name="konstruktoriNimeaaHarjoitusListanOikein" time="0"/>
+  <testcase classname="ecoach.logiikka.HarjoitusListaTest" name="lisattyHarjoitusLoytyyListasta" time="0"/>
   <testcase classname="ecoach.logiikka.HarjoitusListaTest" name="harjoituksenPoistaminenOnnistuu" time="0"/>
-  <testcase classname="ecoach.logiikka.HarjoitusListaTest" name="harjoitusListanTulostaminenOnnistuu" time="0"/>
   <testcase classname="ecoach.logiikka.HarjoitusListaTest" name="harjoituksenLisaaminenListaanOnnistuu" time="0"/>
+  <testcase classname="ecoach.logiikka.HarjoitusListaTest" name="harjoitusListaOnOikeanKokoinen" time="0"/>
 </testsuite>

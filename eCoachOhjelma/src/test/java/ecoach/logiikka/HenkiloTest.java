@@ -1,5 +1,6 @@
 package ecoach.logiikka;
 
+import ecoach.logiikka.henkilo.Henkilo;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

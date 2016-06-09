@@ -1,5 +1,6 @@
 package ecoach.logiikka;
 
+import ecoach.logiikka.harjoitus.Harjoitus;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -24,7 +25,7 @@ public class HarjoitusTest {
     @Test
     public void harjoituksellePystyyAntamaanSisaltoa() {
         harjoitus.setKuvaus("Tämä kuvaa mistä harjoituksessa on kyse");
-        harjoitus.setLinkki("Tähän lisätään youtube linkki");
+        harjoitus.setHarjoitusLinkki("Tähän lisätään youtube linkki");
         assertEquals("Tämä kuvaa mistä harjoituksessa on kyse", harjoitus.getKuvaus());
         assertEquals("Tähän lisätään youtube linkki", harjoitus.getLinkki());
     }
@@ -32,7 +33,7 @@ public class HarjoitusTest {
     @Test
     public void harjoitusTulostusMuotoOnOikein() {
         harjoitus.setKuvaus("testaillaanKuvaustaRiittävilläMerkeillä");
-        harjoitus.setLinkki("testaillaanLinkkia");
+        harjoitus.setHarjoitusLinkki("testaillaanLinkkia");
         harjoitus.toString().compareTo("Harjoitus testeri\n"
                 + "Kuvaus: testaillaanKuvaustaRiittävilläMerkeillä\n"
                 + "Linkki: testaillaanLinkkia");
@@ -57,7 +58,7 @@ public class HarjoitusTest {
     @Test
     public void harjoitusLinkkiSetteriHeittaaPoikkeuksenJosLinkkiSyoteOnHuono() {
         try {
-            harjoitus.setLinkki("a");
+            harjoitus.setHarjoitusLinkki("a");
         } catch (IllegalArgumentException i) {
         }
     }
