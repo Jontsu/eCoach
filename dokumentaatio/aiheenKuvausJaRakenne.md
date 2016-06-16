@@ -4,31 +4,34 @@
 
 **Käyttäjät:** pelaaja, ohjaaja
 
-**Käyttäjien toiminnot:**
-
+    * tilin luominen
     * ohjelmaan kirjautuminen
-    * harjoitusten listaaminen
-    * harjoitussuoritusten listaaminen
-    * harjoitussuoritukseen liittyvien tilastojen listaaminen
-    * harjoitus palautteen selaaminen
 
 **pelaajan toiminnot:**
 
-    * tilin luominen
+    * omien harjoitusten listaaminen
     * harjoituksen valitseminen
-    * omien tietojen selaaminen
-    * linkin lisääminen
-    * statistiikan lähettäminen
-    * kommenttien jättäminen
+    * harjoitukseen liittyvien tietojen selaaminen
+    * harjoituksen suoritus linkin lisääminen
+    * harjoituksen suoritetuksi merkitseminen
 
 **ohjaajan toiminnot:**
 
-    * pelaajan tietojen tarkastaminen
+    * kaikkien harjoitusten listaaminen
+    * ilman ohjaajaa olevien pelaajien listaaminen
+    * pelaajan lisääminen itselle ohjattavaksi
     * harjoituksen luominen
-    * harjoituksen avaaminen pelaajalle
-    * video linkin jättäminen
-    * palautteen antaminen
+    * harjoitukseen liittyvien tietojen lisääminen
+    * harjoituksen lisääminen pelaajalle
+    * pelaajan harjoituksen valitseminen
+    * pelaajan harjoituksen tarkastelu
+    * pelaajan suorituksen arvostelu
 
-**Määrittelyvaiheen luokkakaavio**
+**Luokkakaavio**
 
 ![Luokkakaavio](Luokkakaavio.png)
+
+**Sekvenssikaavioita**
+
+![Uusi pelaaja](SekvenssiokaavioUusiPelaaja.png)
+![Pelaajan kirjautuminen](SekvenssiokaavioPelaajanKirjautuminen.png)

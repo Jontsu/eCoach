@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.11.2">
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/henkilo/Ohjaaja.java">
+</file>
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/henkilo/OhjaajaLista.java">
+</file>
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/henkilo/Henkilo.java">
+</file>
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/henkilo/PelaajaLista.java">
+</file>
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/henkilo/Pelaaja.java">
+</file>
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/harjoitus/HarjoitusLista.java">
+</file>
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/harjoitus/SuoritusTilasto.java">
+</file>
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/harjoitus/Harjoitus.java">
+</file>
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/harjoitus/Suoritus.java">
+</file>
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/TiedostonKasittelija.java">
+</file>
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/OhjelmanInstanssi.java">
+</file>
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/kayttoliittyma/Sisaankirjautumissivu.java">
+</file>
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/kayttoliittyma/HarjoituksenLuominen.java">
+</file>
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/kayttoliittyma/OhjaajanPaasivu.java">
+</file>
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/kayttoliittyma/PelaajanPaasivu.java">
+</file>
+<file name="/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/main/Main.java">
+</file>
+</checkstyle>

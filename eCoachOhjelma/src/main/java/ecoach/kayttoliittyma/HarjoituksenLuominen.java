@@ -2,6 +2,10 @@ package ecoach.kayttoliittyma;
 
 import ecoach.logiikka.harjoitus.*;
 
+/**
+ * Ohjaajan käyttöliittymästä kutsuttava harjoituksen luomista kontrolloiva
+ * käyttöliittymän sivu.
+ */
 public class HarjoituksenLuominen extends javax.swing.JFrame {
 
     private HarjoitusLista kaikkiHarjoitukset;

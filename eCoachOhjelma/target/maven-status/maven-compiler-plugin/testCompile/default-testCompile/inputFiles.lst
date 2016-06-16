@@ -3,6 +3,7 @@
 /home/jo/GitProjects/eCoach/eCoachOhjelma/src/test/java/ecoach/logiikka/henkilo/HenkiloTest.java
 /home/jo/GitProjects/eCoach/eCoachOhjelma/src/test/java/ecoach/logiikka/harjoitus/SuoritusTilastoTest.java
 /home/jo/GitProjects/eCoach/eCoachOhjelma/src/test/java/ecoach/logiikka/harjoitus/HarjoitusTest.java
+/home/jo/GitProjects/eCoach/eCoachOhjelma/src/test/java/ecoach/logiikka/henkilo/OhjaajaListaTest.java
 /home/jo/GitProjects/eCoach/eCoachOhjelma/src/test/java/ecoach/logiikka/harjoitus/SuoritusTest.java
 /home/jo/GitProjects/eCoach/eCoachOhjelma/src/test/java/ecoach/logiikka/henkilo/PelaajaTest.java
 /home/jo/GitProjects/eCoach/eCoachOhjelma/src/test/java/ecoach/logiikka/henkilo/OhjaajaTest.java

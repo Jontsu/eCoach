@@ -3,6 +3,8 @@ package ecoach.logiikka.harjoitus;
 /**
  * Harjoitukseen liityvä suoritus. Molemmat ohjaaja ja pelaaja käyttää tätä
  * käyttöliittymiensä kautta.
+ *
+ * @author Jontsu
  */
 public class Suoritus {
 
@@ -10,6 +12,10 @@ public class Suoritus {
     private String suoritusLinkki;
     private int arvosana;
 
+    /**
+     * Luokan konstruktori joka alustaa tyhjän Suoritus olion, jonka status on
+     * käyttöliittymässä suorittamatta.
+     */
     public Suoritus() {
 
         this.suoritettu = false;
@@ -18,7 +24,8 @@ public class Suoritus {
     }
 
     /**
-     * Pelaajan kontrolloima metodi.
+     * Metodi joka muuttaa suorituksen statuksen, kontrolloidaan pelaajan
+     * käyttöliittymän kautta.
      */
     public void muutaSuoritusStatus() {
 
@@ -31,7 +38,10 @@ public class Suoritus {
     }
 
     /**
-     * Pelaajan kontrolloima metodi.
+     * Metodi lisää suoritukselle suorituslinkin, kontrolloidaan pelaajan
+     * käyttöliittymän kautta.
+     *
+     * @param suorituslinkki String syöte.
      */
     public void setSuoritusLinkki(String suorituslinkki) {
 
@@ -39,13 +49,21 @@ public class Suoritus {
     }
 
     /**
-     * Ohjaajan kontrolloima metodi.
+     * Metodi lisää suoritukselle arvosanan, kontrolloidaan pelaajan
+     * käyttöliittymän kautta.
+     *
+     * @param arvosana int syöte.
      */
     public void setArvosana(int arvosana) {
 
         this.arvosana = arvosana;
     }
 
+    /**
+     * Metodi joka palauttaa suorituksen statuksen.
+     * 
+     * @return suoritettu.
+     */
     public boolean suoritusStatus() {
 
         return suoritettu;

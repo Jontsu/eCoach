@@ -14,4 +14,8 @@ Päivä | Tunnit | Kuvaus
 07.06.2016 | 3.0h | Rikkinäisen koodin korjaaminen ja turhan koodin poisto
 08.06.2016 | 3.0h | Pajalla käynti ja logiikan laajentamisen suunnittelu
 09.06.2016 | 4.0h | Käyttöliittymän korjaus uuden rakenteen vastaiseksi, pit, checkstyle ja git push
-15.06.2016 | 3.0h | Testien lisääminen
+11.06.2016 | 5.0h | Ohjaajan ja harjoituksen luomis jFramen suunnittelu
+12.06.2016 | 6.0h | Ohjaajan ja harjoituksen luomis jFramen toiminnallisuuden kirjoittamista
+13.06.2016 | 3.0h | Ohjaajan jFramen toiminnallisuuden ongelmien ratkomista
+15.06.2016 | 3.0h | Ratkaisun etsimistä tiedon välittämiseen ohjelman sisällä, liittyy myös ohjaajan jFramen toiminallisuuden ratkomiseen
+16.06.2016 | 5.0h | Etäpaja kysymykset, luokkakaavion päivittäminen, sekvenssikaaviot, checkstyle, pit, jne

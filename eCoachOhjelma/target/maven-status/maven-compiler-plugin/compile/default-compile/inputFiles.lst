@@ -1,8 +1,10 @@
 /home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/kayttoliittyma/OhjaajanPaasivu.java
 /home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/harjoitus/HarjoitusLista.java
+/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/henkilo/OhjaajaLista.java
 /home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/henkilo/Ohjaaja.java
 /home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/henkilo/Pelaaja.java
 /home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/main/Main.java
+/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/OhjelmanInstanssi.java
 /home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/kayttoliittyma/Sisaankirjautumissivu.java
 /home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/harjoitus/Suoritus.java
 /home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/kayttoliittyma/PelaajanPaasivu.java
