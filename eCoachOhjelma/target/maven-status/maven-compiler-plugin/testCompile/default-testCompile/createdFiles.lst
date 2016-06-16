@@ -1,2 +1,8 @@
-ecoach/logiikka/HenkiloTest.class
-ecoach/logiikka/PelaajaTest.class
+ecoach/logiikka/harjoitus/SuoritusTest.class
+ecoach/logiikka/harjoitus/HarjoitusTest.class
+ecoach/logiikka/henkilo/PelaajaTest.class
+ecoach/logiikka/henkilo/OhjaajaTest.class
+ecoach/logiikka/henkilo/PelaajaListaTest.class
+ecoach/logiikka/henkilo/HenkiloTest.class
+ecoach/logiikka/harjoitus/HarjoitusListaTest.class
+ecoach/logiikka/harjoitus/SuoritusTilastoTest.class

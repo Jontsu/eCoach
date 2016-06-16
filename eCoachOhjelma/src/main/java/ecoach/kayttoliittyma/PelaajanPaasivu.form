@@ -29,7 +29,7 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="sivunOtsikko" max="32767" attributes="0"/>
+                  <Component id="otsikkoLoL" max="32767" attributes="0"/>
                   <Component id="kuvauksenPaneeli" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="harjoitusValikkoCBnOtsikko" pref="175" max="32767" attributes="0"/>
@@ -37,7 +37,7 @@
                       <Component id="harjoitusValikkoCBox" min="-2" pref="423" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="wwwLinkki" min="-2" pref="407" max="-2" attributes="0"/>
+                      <Component id="linkkiLabel" min="-2" pref="407" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="suoritusNappi" max="32767" attributes="0"/>
                   </Group>
@@ -50,7 +50,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="sivunOtsikko" min="-2" pref="43" max="-2" attributes="0"/>
+              <Component id="otsikkoLoL" min="-2" pref="43" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="harjoitusValikkoCBox" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
@@ -60,7 +60,7 @@
               <Component id="kuvauksenPaneeli" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="wwwLinkki" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="linkkiLabel" min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="suoritusNappi" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
@@ -82,12 +82,12 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="wwwLinkki">
+    <Component class="javax.swing.JTextField" name="linkkiLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Lis&#xe4;&#xe4; t&#xe4;h&#xe4;n suoritus nauhoituksen linkki"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="wwwLinkkiActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="linkkiLabelActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="kuvauksenPaneeli">
@@ -110,7 +110,7 @@
         <Property name="text" type="java.lang.String" value="Avoimet harjoitukset:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="sivunOtsikko">
+    <Component class="javax.swing.JLabel" name="otsikkoLoL">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Ubuntu" size="24" style="1"/>

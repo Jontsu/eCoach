@@ -1,5 +1,8 @@
-/home/jo/GitProjects/eCoach/eCoachOhjelma/src/test/java/ecoach/logiikka/HenkiloTest.java
-/home/jo/GitProjects/eCoach/eCoachOhjelma/src/test/java/ecoach/logiikka/PelaajaTest.java
-/home/jo/GitProjects/eCoach/eCoachOhjelma/src/test/java/ecoach/logiikka/HarjoitusListaTest.java
-/home/jo/GitProjects/eCoach/eCoachOhjelma/src/test/java/ecoach/logiikka/OhjaajaTest.java
-/home/jo/GitProjects/eCoach/eCoachOhjelma/src/test/java/ecoach/logiikka/HarjoitusTest.java
+/home/jo/GitProjects/eCoach/eCoachOhjelma/src/test/java/ecoach/logiikka/henkilo/PelaajaListaTest.java
+/home/jo/GitProjects/eCoach/eCoachOhjelma/src/test/java/ecoach/logiikka/harjoitus/HarjoitusListaTest.java
+/home/jo/GitProjects/eCoach/eCoachOhjelma/src/test/java/ecoach/logiikka/henkilo/HenkiloTest.java
+/home/jo/GitProjects/eCoach/eCoachOhjelma/src/test/java/ecoach/logiikka/harjoitus/SuoritusTilastoTest.java
+/home/jo/GitProjects/eCoach/eCoachOhjelma/src/test/java/ecoach/logiikka/harjoitus/HarjoitusTest.java
+/home/jo/GitProjects/eCoach/eCoachOhjelma/src/test/java/ecoach/logiikka/harjoitus/SuoritusTest.java
+/home/jo/GitProjects/eCoach/eCoachOhjelma/src/test/java/ecoach/logiikka/henkilo/PelaajaTest.java
+/home/jo/GitProjects/eCoach/eCoachOhjelma/src/test/java/ecoach/logiikka/henkilo/OhjaajaTest.java

@@ -14,3 +14,4 @@ Päivä | Tunnit | Kuvaus
 07.06.2016 | 3.0h | Rikkinäisen koodin korjaaminen ja turhan koodin poisto
 08.06.2016 | 3.0h | Pajalla käynti ja logiikan laajentamisen suunnittelu
 09.06.2016 | 4.0h | Käyttöliittymän korjaus uuden rakenteen vastaiseksi, pit, checkstyle ja git push
+15.06.2016 | 3.0h | Testien lisääminen

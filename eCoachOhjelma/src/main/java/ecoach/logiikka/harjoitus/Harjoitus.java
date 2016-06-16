@@ -11,15 +11,20 @@ public class Harjoitus {
     private String harjoitusLinkki;
     private Suoritus suoritus;
 
-    public Harjoitus(String nimi) {
+    public Harjoitus() {
 
-        parametriValidori(nimi, 5);
-
-        this.nimi = nimi;
+        this.nimi = "";
         this.kuvaus = "";
         this.harjoitusLinkki = "";
         this.suoritus = new Suoritus();
 
+    }
+
+    public void setNimi(String nimi) {
+
+        parametriValidori(nimi, 5);
+
+        this.nimi = nimi;
     }
 
     public void setKuvaus(String kuvaus) {
@@ -59,7 +64,7 @@ public class Harjoitus {
     public static void parametriValidori(String parametri, int minPituus) {
 
         if (parametri == null || parametri.isEmpty() || parametri.length() < minPituus) {
-            throw new IllegalArgumentException(parametri + " ei ole oikein");
+            throw new IllegalArgumentException(parametri + " syöte ei ole oikein");
         }
     }
 }
