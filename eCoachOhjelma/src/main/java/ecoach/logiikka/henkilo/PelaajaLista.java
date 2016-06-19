@@ -40,6 +40,18 @@ public class PelaajaLista {
         this.pelaajalista.remove(pelaaja);
     }
 
+    public Pelaaja getPelajaListasta(Pelaaja pelaaja) {
+
+        for (int i = 0; i < this.pelaajalista.size(); i++) {
+
+            if (this.pelaajalista.get(i).getNimike().equals(pelaaja.getNimike())) {
+                return this.pelaajalista.get(i);
+            }
+        }
+
+        return null;
+    }
+
     public ArrayList<Pelaaja> getPelaajaLista() {
 
         return this.pelaajalista;

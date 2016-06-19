@@ -1,5 +1,6 @@
 package ecoach.kayttoliittyma;
 
+import ecoach.logiikka.*;
 import ecoach.logiikka.harjoitus.*;
 import ecoach.logiikka.henkilo.*;
 import javax.swing.*;
@@ -9,66 +10,107 @@ import javax.swing.*;
  * käyttöliittymäsivulta.
  */
 public class OhjaajanPaasivu extends javax.swing.JFrame {
-
+    
     private Ohjaaja ohjaaja;
     private HarjoitusLista kaikkiHarjoitukset;
     private PelaajaLista pelaajatIlmanOhjaajaa;
     private Pelaaja valittuPelaaja;
     private int apuIndeksi;
-
-    public OhjaajanPaasivu(Ohjaaja ohjaaja, HarjoitusLista kaikkiHarjoitukset, PelaajaLista pelaajatIlmanOhjaajaa) {
+    
+    public OhjaajanPaasivu(Ohjaaja ohjaaja) {
+        
         initComponents();
-
+        
         this.ohjaaja = ohjaaja;
-        this.kaikkiHarjoitukset = kaikkiHarjoitukset;
-        this.pelaajatIlmanOhjaajaa = pelaajatIlmanOhjaajaa;
+        this.kaikkiHarjoitukset = OhjelmanInstanssi.getInstance().getHarjoitusLista();
+        this.pelaajatIlmanOhjaajaa = OhjelmanInstanssi.getInstance().getPelaajatIlmanOhjaajaa();
         this.valittuPelaaja = null;
         this.apuIndeksi = 0;
-
-        // lisätään ohjaajan pelaajat comboboxiin
-        for (int i = 0; i < ohjaaja.getPelaajaLista().getPelaajaLista().size(); i++) {
-            ohjaajanPelaajatCB.addItem(ohjaaja.getPelaajaLista().getPelaajaLista().get(i).getNimike());
-        }
-
-        // tarvitaanko? ohjaajanPelaajatCB.setSelectedIndex(apuIndeksi);
-        // lisätään olemassa olevat harjoitukset comboboxiin        
-        for (int i = 0; i < kaikkiHarjoitukset.getLista().size(); i++) {
-            kaikkiHarjoituksetCB.addItem(kaikkiHarjoitukset.getLista().get(i).getNimi());
-        }
-
-        // tarvitaanko? kaikkiHarjoituksetCB.setSelectedIndex(apuIndeksi);
-        // lisätään ohjaajan pelaajat ilman ohjaajaa comboboxiin
-        for (int i = 0; i < pelaajatIlmanOhjaajaa.getPelaajaLista().size(); i++) {
-            pelaajatIlmanOhjaajaaCB.addItem(pelaajatIlmanOhjaajaa.getPelaajaLista().get(i).getNimike());
-        }
-
-        // tarvitaanko? pelaajatIlmanOhjaajaaCB.setSelectedIndex(apuIndeksi);
-    }
-
-    public void paivitaHarjoitukseenLiittyvatTiedot() {
-
-        harjoitusLinkkiTxt.setText(valittuPelaaja.getHarjoitusLista().getLista().get(apuIndeksi).getLinkki());
-        harjoituksenKuvausTA.setText(valittuPelaaja.getHarjoitusLista().getLista().get(apuIndeksi).getKuvaus());
-
-        if (valittuPelaaja.getHarjoitusLista().getLista().get(apuIndeksi).getSuoritus().suoritusStatus() == true) {
-            palautusLinkkiField.setText(valittuPelaaja.getHarjoitusLista().getLista().get(apuIndeksi).getSuoritus().getSuoritusLinkki());
-        } else {
-            palautusLinkkiField.setText("Ei palautusta");
-        }
-
-        if (valittuPelaaja.getHarjoitusLista().getLista().get(apuIndeksi).getSuoritus().getArvosana() == -1) {
-            arvosteltuNappi.setEnabled(true);
-        } else {
-            arvosteltuNappi.setEnabled(false);
-            arvosanaCB.setSelectedIndex(valittuPelaaja.getHarjoitusLista().getLista().get(apuIndeksi).getSuoritus().getArvosana() - 1);
-            arvosanaCB.setEnabled(false);
-        }
-    }
-
-    public void cbMouseListener() {
         
+        paivitaOhjaajanCB();
     }
     
+    public final void paivitaOhjaajanCB() {
+
+        // lisätään ohjaajan pelaajat comboboxiin
+        if (ohjaaja.getPelaajaLista() == null) {
+            ohjaaja.lisaaPelaajaLista(new PelaajaLista());
+        }
+        
+        for (int i = 0; i < ohjaaja.getPelaajaLista().getPelaajaLista().size(); i++) {
+            
+            if (ohjaajanPelaajatCB.getItemAt(i) == null || !ohjaajanPelaajatCB.getItemAt(i).equals(ohjaaja.getPelaajaLista().getPelaajaLista().get(i).getNimike())) {
+                ohjaajanPelaajatCB.addItem(ohjaaja.getPelaajaLista().getPelaajaLista().get(i).getNimike());
+            }
+        }
+
+        // lisätään kaikki harjoitukset comboboxiin        
+        for (int i = 0; i < kaikkiHarjoitukset.getHarjoitusLista().size(); i++) {
+            
+            if (kaikkiHarjoituksetCB.getItemAt(i) == null || !kaikkiHarjoituksetCB.getItemAt(i).equals(kaikkiHarjoitukset.getHarjoitusLista().get(i).getNimi())) {
+                kaikkiHarjoituksetCB.addItem(kaikkiHarjoitukset.getHarjoitusLista().get(i).getNimi());
+            }
+        }
+
+        // lisätään pelaajat ilman ohjaajaa comboboxiin
+        for (int i = 0; i < pelaajatIlmanOhjaajaa.getPelaajaLista().size(); i++) {
+            
+            if (pelaajatIlmanOhjaajaaCB.getItemAt(i) == null || !pelaajatIlmanOhjaajaaCB.getItemAt(i).equals(pelaajatIlmanOhjaajaa.getPelaajaLista().get(i).getNimike())) {
+                pelaajatIlmanOhjaajaaCB.addItem(pelaajatIlmanOhjaajaa.getPelaajaLista().get(i).getNimike());
+            }
+        }
+    }
+    
+    public void paivitaPelaajanHarjoitusCB() {
+        
+        if (!ohjaaja.getPelaajaLista().getPelaajaLista().isEmpty()) {
+            
+            valittuPelaaja = ohjaaja.getPelaajaLista().getPelaajaLista().get(ohjaajanPelaajatCB.getSelectedIndex());
+            
+            if (valittuPelaaja.getHarjoitusLista() == null) {
+                valittuPelaaja.lisaaHarjoitusLista(new HarjoitusLista());
+            }
+            
+            if (pelaajanHarjoituksetCB.getSelectedIndex() != -1) {
+                pelaajanHarjoituksetCB.removeAllItems();
+            }
+            
+            for (int i = 0; i < valittuPelaaja.getHarjoitusLista().getHarjoitusLista().size(); i++) {
+                
+                if (pelaajanHarjoituksetCB.getItemAt(i) == null) {
+                    pelaajanHarjoituksetCB.addItem(valittuPelaaja.getHarjoitusLista().getHarjoitusLista().get(i).getNimi());
+                }
+            }
+        }
+    }
+    
+    public void paivitaHarjoituksenTiedot() {
+        
+        if (pelaajanHarjoituksetCB.getSelectedIndex() != -1) {
+            
+            apuIndeksi = pelaajanHarjoituksetCB.getSelectedIndex();
+            harjoitusLinkkiTxt.setText(valittuPelaaja.getHarjoitusLista().getHarjoitusLista().get(apuIndeksi).getLinkki());
+            harjoituksenKuvausTA.setText(valittuPelaaja.getHarjoitusLista().getHarjoitusLista().get(apuIndeksi).getKuvaus());
+            
+            if (valittuPelaaja.getHarjoitusLista().getHarjoitusLista().get(apuIndeksi).getSuoritus().suoritusStatus() == true) {
+                palautusLinkkiField.setText(valittuPelaaja.getHarjoitusLista().getHarjoitusLista().get(apuIndeksi).getSuoritus().getSuoritusLinkki());
+                
+            } else {
+                palautusLinkkiField.setText("Ei palautusta");
+            }
+            
+            if (valittuPelaaja.getHarjoitusLista().getHarjoitusLista().get(apuIndeksi).getSuoritus().getArvosana() == -1) {
+                arvosteltuNappi.setEnabled(true);
+                arvosanaCB.setEnabled(true);
+                arvosanaCB.setSelectedIndex(0);
+                
+            } else {
+                arvosteltuNappi.setEnabled(false);
+                arvosanaCB.setSelectedIndex(valittuPelaaja.getHarjoitusLista().getHarjoitusLista().get(apuIndeksi).getSuoritus().getArvosana() - 1);
+                arvosanaCB.setEnabled(false);
+            }
+        }
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -96,35 +138,47 @@ public class OhjaajanPaasivu extends javax.swing.JFrame {
         pelaajatIlmanOhjaajaaCB = new javax.swing.JComboBox<>();
         lisaaOhjattavaksiNappi = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(javax.swing.UIManager.getDefaults().getColor("ColorChooser.foreground"));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ohjaajanPelaajatCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ohjaajanPelaajatCBActionPerformed(evt);
             }
         });
+        getContentPane().add(ohjaajanPelaajatCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 409, -1));
 
         harjoituksenKuvausTA.setColumns(20);
         harjoituksenKuvausTA.setRows(5);
         harjoituksenKuvausScrollFld.setViewportView(harjoituksenKuvausTA);
 
+        getContentPane().add(harjoituksenKuvausScrollFld, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 569, -1));
+
         ohjatutPelaajatLabel.setText("Ohjatut pelaajat:");
+        getContentPane().add(ohjatutPelaajatLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 171, 149, 30));
 
         otsikkoLoL.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
         otsikkoLoL.setForeground(java.awt.Color.black);
         otsikkoLoL.setText("League of Legends Harjoitustyökalu");
+        getContentPane().add(otsikkoLoL, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 569, 43));
 
         pelaajanHarjoituksetLabel.setText("Pelaajan harjoitukset:");
+        getContentPane().add(pelaajanHarjoituksetLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, 27));
 
         pelaajanHarjoituksetCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pelaajanHarjoituksetCBActionPerformed(evt);
             }
         });
+        getContentPane().add(pelaajanHarjoituksetCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 409, -1));
 
         harjoituksenKuvausField.setText("Harjoituksen kuvaus");
+        getContentPane().add(harjoituksenKuvausField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, 30));
 
         palautusLinkkiField.setText("Palautuslinkki");
         palautusLinkkiField.addActionListener(new java.awt.event.ActionListener() {
@@ -132,6 +186,7 @@ public class OhjaajanPaasivu extends javax.swing.JFrame {
                 palautusLinkkiFieldActionPerformed(evt);
             }
         });
+        getContentPane().add(palautusLinkkiField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 470, 200, 30));
 
         arvosteltuNappi.setText("Merkitse arvosteltuksi");
         arvosteltuNappi.addActionListener(new java.awt.event.ActionListener() {
@@ -139,6 +194,7 @@ public class OhjaajanPaasivu extends javax.swing.JFrame {
                 arvosteltuNappiActionPerformed(evt);
             }
         });
+        getContentPane().add(arvosteltuNappi, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 470, 230, 30));
 
         arvosanaCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
         arvosanaCB.addActionListener(new java.awt.event.ActionListener() {
@@ -146,31 +202,38 @@ public class OhjaajanPaasivu extends javax.swing.JFrame {
                 arvosanaCBActionPerformed(evt);
             }
         });
+        getContentPane().add(arvosanaCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 470, 80, 30));
 
-        annaArvosanaLabel.setText("Anna arvosana:");
+        annaArvosanaLabel.setText("Arvosana:");
+        getContentPane().add(annaArvosanaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 450, -1, -1));
 
         harjoitusLinkkiLabel.setText("Harjoituksen linkki:");
+        getContentPane().add(harjoitusLinkkiLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, 26));
 
         harjoitusLinkkiTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 harjoitusLinkkiTxtActionPerformed(evt);
             }
         });
+        getContentPane().add(harjoitusLinkkiTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 409, -1));
 
         harjoituksetLabel.setText("Harjoitukset:");
+        getContentPane().add(harjoituksetLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, 14));
 
         kaikkiHarjoituksetCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kaikkiHarjoituksetCBActionPerformed(evt);
             }
         });
+        getContentPane().add(kaikkiHarjoituksetCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 409, -1));
 
-        luoUusiHarjoitusNappi.setText("Luo uusi harjoitus");
+        luoUusiHarjoitusNappi.setText("Uusi harjoitus");
         luoUusiHarjoitusNappi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 luoUusiHarjoitusNappiActionPerformed(evt);
             }
         });
+        getContentPane().add(luoUusiHarjoitusNappi, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, 148, -1));
 
         lisaaHarjoitusNappi.setText("Lisää harjoitus");
         lisaaHarjoitusNappi.addActionListener(new java.awt.event.ActionListener() {
@@ -178,128 +241,67 @@ public class OhjaajanPaasivu extends javax.swing.JFrame {
                 lisaaHarjoitusNappiActionPerformed(evt);
             }
         });
+        getContentPane().add(lisaaHarjoitusNappi, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, 148, -1));
 
         pelaajatIlmanOhjaajaaLabel.setText("Pelaajat ilman ohjaajaa:");
+        getContentPane().add(pelaajatIlmanOhjaajaaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 113, -1, 30));
 
         pelaajatIlmanOhjaajaaCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pelaajatIlmanOhjaajaaCBActionPerformed(evt);
             }
         });
+        getContentPane().add(pelaajatIlmanOhjaajaaCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 409, -1));
 
-        lisaaOhjattavaksiNappi.setText("Lisää ohjattavaksi");
+        lisaaOhjattavaksiNappi.setText("Lisää pelaaja");
         lisaaOhjattavaksiNappi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lisaaOhjattavaksiNappiActionPerformed(evt);
             }
         });
+        getContentPane().add(lisaaOhjattavaksiNappi, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 148, -1));
 
         jLabel1.setText("Palautuslinkki:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(otsikkoLoL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(harjoituksenKuvausScrollFld, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(harjoituksenKuvausField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ohjaajanPelaajatCB, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ohjatutPelaajatLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lisaaHarjoitusNappi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(pelaajanHarjoituksetLabel)
-                                    .addComponent(harjoitusLinkkiLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(harjoitusLinkkiTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(pelaajanHarjoituksetCB, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(pelaajatIlmanOhjaajaaLabel)
-                                .addGap(263, 263, 263))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(harjoituksetLabel)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(pelaajatIlmanOhjaajaaCB, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(kaikkiHarjoituksetCB, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(luoUusiHarjoitusNappi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lisaaOhjattavaksiNappi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(palautusLinkkiField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(115, 115, 115)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(arvosanaCB, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(98, 98, 98)
-                                .addComponent(arvosteltuNappi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(annaArvosanaLabel)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap())
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(otsikkoLoL, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
-                .addComponent(harjoituksetLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(luoUusiHarjoitusNappi)
-                    .addComponent(kaikkiHarjoituksetCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addComponent(pelaajatIlmanOhjaajaaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lisaaOhjattavaksiNappi)
-                    .addComponent(pelaajatIlmanOhjaajaaCB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lisaaHarjoitusNappi)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ohjatutPelaajatLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ohjaajanPelaajatCB, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pelaajanHarjoituksetCB)
-                    .addComponent(pelaajanHarjoituksetLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(harjoitusLinkkiLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(harjoitusLinkkiTxt))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(harjoituksenKuvausField)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(harjoituksenKuvausScrollFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(annaArvosanaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(arvosteltuNappi, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(palautusLinkkiField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(arvosanaCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 500, -1, 10));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 160, 0, -1));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 510, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 0, 10, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -309,17 +311,26 @@ public class OhjaajanPaasivu extends javax.swing.JFrame {
     }//GEN-LAST:event_palautusLinkkiFieldActionPerformed
 
     private void arvosteltuNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arvosteltuNappiActionPerformed
-        // TODO add your handling code here:
+        
+        valittuPelaaja.getHarjoitusLista().getHarjoitusLista().get(apuIndeksi).getSuoritus().setArvosana(arvosanaCB.getSelectedIndex() + 1);
+        paivitaHarjoituksenTiedot();
     }//GEN-LAST:event_arvosteltuNappiActionPerformed
 
     private void luoUusiHarjoitusNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_luoUusiHarjoitusNappiActionPerformed
-
-        new HarjoituksenLuominen(kaikkiHarjoitukset).setVisible(true);
+        
+        new HarjoituksenLuominen(this.ohjaaja).setVisible(true);
+        super.dispose();
     }//GEN-LAST:event_luoUusiHarjoitusNappiActionPerformed
 
     private void lisaaHarjoitusNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lisaaHarjoitusNappiActionPerformed
-        // TODO add your handling code here:
-
+        
+        if (valittuPelaaja != null && valittuPelaaja.getHarjoitusLista() != null) {
+            
+            if (!valittuPelaaja.getHarjoitusLista().getHarjoitusLista().contains(kaikkiHarjoitukset.getHarjoitusLista().get(kaikkiHarjoituksetCB.getSelectedIndex()))) {
+                valittuPelaaja.getHarjoitusLista().lisaaHarjoitus(kaikkiHarjoitukset.getHarjoitusLista().get(kaikkiHarjoituksetCB.getSelectedIndex()));
+                pelaajanHarjoituksetCB.addItem(kaikkiHarjoitukset.getHarjoitusLista().get(kaikkiHarjoituksetCB.getSelectedIndex()).getNimi());
+            }
+        }
     }//GEN-LAST:event_lisaaHarjoitusNappiActionPerformed
 
     private void arvosanaCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arvosanaCBActionPerformed
@@ -331,28 +342,23 @@ public class OhjaajanPaasivu extends javax.swing.JFrame {
     }//GEN-LAST:event_kaikkiHarjoituksetCBActionPerformed
 
     private void ohjaajanPelaajatCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ohjaajanPelaajatCBActionPerformed
-        JComboBox apuCB = (JComboBox) evt.getSource();
-        valittuPelaaja = ohjaaja.getPelaajaLista().getPelaajaLista().get(apuCB.getSelectedIndex());
-
         
-        
-        for (int i = 0; i < valittuPelaaja.getHarjoitusLista().getLista().size(); i++) {
-
-            pelaajanHarjoituksetCB.addItem(valittuPelaaja.getHarjoitusLista().getLista().get(i).getNimi());
-
-        }
+        paivitaPelaajanHarjoitusCB();
     }//GEN-LAST:event_ohjaajanPelaajatCBActionPerformed
 
     private void pelaajanHarjoituksetCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pelaajanHarjoituksetCBActionPerformed
-        JComboBox apuCB = (JComboBox) evt.getSource();
-        apuIndeksi = apuCB.getSelectedIndex();
-        paivitaHarjoitukseenLiittyvatTiedot();
+        
+        paivitaHarjoituksenTiedot();
     }//GEN-LAST:event_pelaajanHarjoituksetCBActionPerformed
 
     private void lisaaOhjattavaksiNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lisaaOhjattavaksiNappiActionPerformed
-        // TODO add your handling code here:
-        if (evt.getSource() == lisaaOhjattavaksiNappi) {
-            ohjaaja.getPelaajaLista().lisaaPelaaja(pelaajatIlmanOhjaajaa.getPelaajaLista().get(pelaajatIlmanOhjaajaaCB.getSelectedIndex()));
+        
+        if (!pelaajatIlmanOhjaajaa.getPelaajaLista().isEmpty()) {
+            apuIndeksi = pelaajatIlmanOhjaajaaCB.getSelectedIndex();
+            ohjaaja.getPelaajaLista().lisaaPelaaja(pelaajatIlmanOhjaajaa.getPelaajaLista().get(apuIndeksi));
+            pelaajatIlmanOhjaajaa.poistaPelaaja(pelaajatIlmanOhjaajaa.getPelaajaLista().get(apuIndeksi));
+            pelaajatIlmanOhjaajaaCB.removeItemAt(apuIndeksi);
+            paivitaOhjaajanCB();
         }
     }//GEN-LAST:event_lisaaOhjattavaksiNappiActionPerformed
 
@@ -375,6 +381,9 @@ public class OhjaajanPaasivu extends javax.swing.JFrame {
     private javax.swing.JLabel harjoitusLinkkiLabel;
     private javax.swing.JTextField harjoitusLinkkiTxt;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JComboBox<String> kaikkiHarjoituksetCB;
     private javax.swing.JButton lisaaHarjoitusNappi;
     private javax.swing.JButton lisaaOhjattavaksiNappi;

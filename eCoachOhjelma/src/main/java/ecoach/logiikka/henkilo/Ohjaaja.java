@@ -36,4 +36,9 @@ public class Ohjaaja extends Henkilo {
 
         return this.pelaajalista;
     }
+
+    @Override
+    public String toString() {
+        return "Ohjaaja: " + this.getNimike() + ", " + this.getEmail();
+    }
 }

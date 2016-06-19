@@ -1,6 +1,8 @@
 package ecoach.kayttoliittyma;
 
+import ecoach.logiikka.OhjelmanInstanssi;
 import ecoach.logiikka.harjoitus.*;
+import ecoach.logiikka.henkilo.*;
 
 /**
  * Ohjaajan käyttöliittymästä kutsuttava harjoituksen luomista kontrolloiva
@@ -10,12 +12,14 @@ public class HarjoituksenLuominen extends javax.swing.JFrame {
 
     private HarjoitusLista kaikkiHarjoitukset;
     private Harjoitus harjoitus;
+    private Ohjaaja ohjaaja;
 
-    public HarjoituksenLuominen(HarjoitusLista kaikkiHarjoitukset) {
+    public HarjoituksenLuominen(Ohjaaja ohjaaja) {
         initComponents();
 
-        this.kaikkiHarjoitukset = kaikkiHarjoitukset;
+        this.kaikkiHarjoitukset = OhjelmanInstanssi.getInstance().getHarjoitusLista();
         this.harjoitus = new Harjoitus();
+        this.ohjaaja = ohjaaja;
     }
 
     @SuppressWarnings("unchecked")
@@ -122,6 +126,7 @@ public class HarjoituksenLuominen extends javax.swing.JFrame {
         this.harjoitus.setHarjoitusLinkki(harjoituksenLinkkiTxtField.getText());
         this.harjoitus.setKuvaus(kuvausTxtArea.getText());
         this.kaikkiHarjoitukset.lisaaHarjoitus(this.harjoitus);
+        new OhjaajanPaasivu(this.ohjaaja).setVisible(true);
         super.dispose();
     }//GEN-LAST:event_luoHarjoitusNappiActionPerformed
 

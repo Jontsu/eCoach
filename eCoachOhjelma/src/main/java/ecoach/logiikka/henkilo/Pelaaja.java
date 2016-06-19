@@ -40,4 +40,9 @@ public class Pelaaja extends Henkilo {
 
         return this.harjoitusLista;
     }
+
+    @Override
+    public String toString() {
+        return "Pelaaja: " + this.getNimike() + ", " + this.getEmail();
+    }
 }

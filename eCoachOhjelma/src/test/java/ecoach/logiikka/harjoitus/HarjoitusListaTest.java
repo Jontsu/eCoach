@@ -22,7 +22,7 @@ public class HarjoitusListaTest {
     public void harjoituksenLisaaminenListaanOnnistuu() {
         Harjoitus harjoitus;
         harjoitusLista.lisaaHarjoitus(harjoitus = new Harjoitus());
-        assertEquals(harjoitusLista.getLista().size(), 1);
+        assertEquals(harjoitusLista.getHarjoitusLista().size(), 1);
     }
 
     @Test
@@ -30,7 +30,7 @@ public class HarjoitusListaTest {
         Harjoitus harjoitus;
         harjoitusLista.lisaaHarjoitus(harjoitus = new Harjoitus());
         harjoitusLista.poistaHarjoitus(harjoitus);
-        assertEquals(harjoitusLista.getLista().size(), 0);
+        assertEquals(harjoitusLista.getHarjoitusLista().size(), 0);
     }
 
     @Test
@@ -38,13 +38,13 @@ public class HarjoitusListaTest {
         harjoitusLista.lisaaHarjoitus(new Harjoitus());
         harjoitusLista.lisaaHarjoitus(new Harjoitus());
         harjoitusLista.lisaaHarjoitus(new Harjoitus());
-        assertEquals(harjoitusLista.getLista().size(), 3);
+        assertEquals(harjoitusLista.getHarjoitusLista().size(), 3);
     }
 
     @Test
     public void lisattyHarjoitusLoytyyListasta() {
         harjoitusLista.lisaaHarjoitus(new Harjoitus());
-        harjoitusLista.getLista().get(0).setNimi("testiharjoitus");
-        assertEquals(harjoitusLista.getLista().get(0).getNimi(), "testiharjoitus");
+        harjoitusLista.getHarjoitusLista().get(0).setNimi("testiharjoitus");
+        assertEquals(harjoitusLista.getHarjoitusLista().get(0).getNimi(), "testiharjoitus");
     }
 }

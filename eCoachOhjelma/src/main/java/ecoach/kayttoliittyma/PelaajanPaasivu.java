@@ -18,20 +18,23 @@ public class PelaajanPaasivu extends javax.swing.JFrame {
         this.pelaaja = pelaaja;
         this.valitunHarjoituksenIndeksi = 0;
 
-        for (int i = 0; i < pelaaja.getHarjoitusLista().getLista().size(); i++) {
-            harjoitusValikkoCBox.addItem(pelaaja.getHarjoitusLista().getLista().get(i).getNimi());
+        if (this.pelaaja.getHarjoitusLista() != null) {
+
+            for (int i = 0; i < pelaaja.getHarjoitusLista().getHarjoitusLista().size(); i++) {
+                harjoitusValikkoCBox.addItem(pelaaja.getHarjoitusLista().getHarjoitusLista().get(i).getNimi());
+            }
+
+            harjoitusValikkoCBox.setSelectedIndex(valitunHarjoituksenIndeksi);
+
+            this.tarkistaSuoritusStatus();
         }
-
-        harjoitusValikkoCBox.setSelectedIndex(valitunHarjoituksenIndeksi);
-
-        this.tarkistaSuoritusStatus();
     }
 
     public final void tarkistaSuoritusStatus() {
 
-        if (pelaaja.getHarjoitusLista().getLista().get(valitunHarjoituksenIndeksi).getSuoritus().suoritusStatus() == true) {
+        if (pelaaja.getHarjoitusLista().getHarjoitusLista().get(valitunHarjoituksenIndeksi).getSuoritus().suoritusStatus() == true) {
             suoritusNappi.setEnabled(false);
-            linkkiLabel.setText(pelaaja.getHarjoitusLista().getLista().get(valitunHarjoituksenIndeksi).getSuoritus().getSuoritusLinkki());
+            linkkiLabel.setText(pelaaja.getHarjoitusLista().getHarjoitusLista().get(valitunHarjoituksenIndeksi).getSuoritus().getSuoritusLinkki());
             linkkiLabel.setEditable(false);
         } else {
             suoritusNappi.setEnabled(true);
@@ -43,7 +46,7 @@ public class PelaajanPaasivu extends javax.swing.JFrame {
     public final void paivitaKuvaus() {
 
         String apuString;
-        apuString = pelaaja.getHarjoitusLista().getLista().get(valitunHarjoituksenIndeksi).getKuvaus();
+        apuString = pelaaja.getHarjoitusLista().getHarjoitusLista().get(valitunHarjoituksenIndeksi).getKuvaus();
         harjoituksenKuvaus.setText(apuString);
         harjoituksenKuvaus.setEditable(false);
     }
@@ -143,10 +146,13 @@ public class PelaajanPaasivu extends javax.swing.JFrame {
 
     private void suoritusNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suoritusNappiActionPerformed
 
-        if (evt.getSource() == suoritusNappi) {
-            pelaaja.getHarjoitusLista().getLista().get(valitunHarjoituksenIndeksi).getSuoritus().muutaSuoritusStatus();
-            pelaaja.getHarjoitusLista().getLista().get(valitunHarjoituksenIndeksi).getSuoritus().setSuoritusLinkki(linkkiLabel.getText());
-            this.tarkistaSuoritusStatus();
+        if (this.pelaaja.getHarjoitusLista() != null) {
+
+            if (evt.getSource() == suoritusNappi) {
+                pelaaja.getHarjoitusLista().getHarjoitusLista().get(valitunHarjoituksenIndeksi).getSuoritus().muutaSuoritusStatus();
+                pelaaja.getHarjoitusLista().getHarjoitusLista().get(valitunHarjoituksenIndeksi).getSuoritus().setSuoritusLinkki(linkkiLabel.getText());
+                this.tarkistaSuoritusStatus();
+            }
         }
     }//GEN-LAST:event_suoritusNappiActionPerformed
 

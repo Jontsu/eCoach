@@ -30,6 +30,18 @@ public class OhjaajaLista {
         this.ohjaajalista.add(ohjaaja);
     }
 
+    public Ohjaaja getOhjaajaListasta(Ohjaaja ohjaaja) {
+
+        for (int i = 0; i < this.ohjaajalista.size(); i++) {
+
+            if (this.ohjaajalista.get(i).getNimike().equals(ohjaaja.getNimike())) {
+                return this.ohjaajalista.get(i);
+            }
+        }
+
+        return null;
+    }
+
     public ArrayList<Ohjaaja> getOhjaajaLista() {
 
         return this.ohjaajalista;

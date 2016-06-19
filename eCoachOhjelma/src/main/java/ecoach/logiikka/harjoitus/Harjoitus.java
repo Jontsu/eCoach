@@ -99,4 +99,9 @@ public class Harjoitus {
             throw new IllegalArgumentException(parametri + " syöte ei ole oikein");
         }
     }
+
+    @Override
+    public String toString() {
+        return "Harjoitus: " + this.nimi + ", " + this.harjoitusLinkki;
+    }
 }

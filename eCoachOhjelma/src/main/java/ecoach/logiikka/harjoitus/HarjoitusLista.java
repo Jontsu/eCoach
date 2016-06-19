@@ -42,7 +42,19 @@ public class HarjoitusLista {
         this.harjoituslista.remove(harjoitus);
     }
 
-    public ArrayList<Harjoitus> getLista() {
+    public Harjoitus getHarjoitusListasta(Harjoitus harjoitus) {
+
+        for (int i = 0; i < this.harjoituslista.size(); i++) {
+
+            if (this.harjoituslista.get(i).getNimi().equals(harjoitus.getNimi())) {
+                return this.harjoituslista.get(i);
+            }
+        }
+
+        return null;
+    }
+
+    public ArrayList<Harjoitus> getHarjoitusLista() {
 
         return this.harjoituslista;
     }
