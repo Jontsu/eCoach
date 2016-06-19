@@ -19,3 +19,6 @@ Päivä | Tunnit | Kuvaus
 13.06.2016 | 3.0h | Ohjaajan jFramen toiminnallisuuden ongelmien ratkomista
 15.06.2016 | 3.0h | Ratkaisun etsimistä tiedon välittämiseen ohjelman sisällä, liittyy myös ohjaajan jFramen toiminallisuuden ratkomiseen
 16.06.2016 | 5.0h | Etäpaja kysymykset, luokkakaavion päivittäminen, sekvenssikaaviot, checkstyle, pit, jne
+17.06.2016 | 3.0h | Instanssi luokan teko ja yhdistäminen ohjelmaan
+18.06.2016 | 7.0h | Ohjaajan jFramen toiminnallisuuden ongelmien ratkomista
+19.06.2016 | 6.0h | Sisäänkirjautumis jFramen toteutus ja jFramejen yhdistäminen
