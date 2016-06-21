@@ -1,5 +1,6 @@
 package ecoach.logiikka.henkilo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -7,7 +8,7 @@ import java.util.ArrayList;
  *
  * @author Jontsu
  */
-public class OhjaajaLista {
+public class OhjaajaLista implements Serializable {
 
     private ArrayList<Ohjaaja> ohjaajalista;
 

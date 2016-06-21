@@ -1,6 +1,7 @@
 package ecoach.logiikka.henkilo;
 
 import ecoach.logiikka.harjoitus.HarjoitusLista;
+import java.io.Serializable;
 
 /**
  * Pelaaja luokka joka laajentaa henkilö luokkaa lisäämällä pelaajalle
@@ -9,7 +10,7 @@ import ecoach.logiikka.harjoitus.HarjoitusLista;
  *
  * @author Jontsu
  */
-public class Pelaaja extends Henkilo {
+public class Pelaaja extends Henkilo implements Serializable {
 
     HarjoitusLista harjoitusLista;
 

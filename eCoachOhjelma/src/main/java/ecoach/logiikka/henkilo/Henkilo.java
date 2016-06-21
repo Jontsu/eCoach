@@ -1,11 +1,13 @@
 package ecoach.logiikka.henkilo;
 
+import java.io.Serializable;
+
 /**
  * Luokka joka määrittää henkilölle kuuluvat perustiedot.
  *
  * @author Jontsu
  */
-public class Henkilo {
+public class Henkilo implements Serializable {
 
     private String nimike;
     private String email;

@@ -1,4 +1,4 @@
-package ecoach.tiedostonkasittely;
+package ecoach.tiedonkasittely;
 
 import java.io.*;
 import ecoach.logiikka.*;
@@ -8,20 +8,20 @@ import ecoach.logiikka.*;
  */
 public class TiedostonKasittelija {
 
-    public static void kirjoitaTiedostoon(String tiedostonNimi) throws FileNotFoundException, IOException {
+    public static void kirjoitaTiedostoon(OhjelmanTiedot ohjelmanTiedot, String tiedostonNimi) throws FileNotFoundException, IOException {
 
         FileOutputStream fos = new FileOutputStream(tiedostonNimi);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
-        oos.writeObject(OhjelmanInstanssi.getInstance());
+        oos.writeObject(ohjelmanTiedot);
         oos.close();
     }
 
-    public static OhjelmanInstanssi lueTiedostosta(String tiedostonNimi) throws IOException, ClassNotFoundException {
+    public static OhjelmanTiedot lueTiedostosta(String tiedostonNimi) throws IOException, ClassNotFoundException {
 
         FileInputStream fis = new FileInputStream(tiedostonNimi);
         ObjectInputStream ois = new ObjectInputStream(fis);
-        OhjelmanInstanssi ohjelmanInstanssi = (OhjelmanInstanssi) ois.readObject();
+        OhjelmanTiedot ohjelmanTiedot = (OhjelmanTiedot) ois.readObject();
         ois.close();
-        return ohjelmanInstanssi;
+        return ohjelmanTiedot;
     }
 }

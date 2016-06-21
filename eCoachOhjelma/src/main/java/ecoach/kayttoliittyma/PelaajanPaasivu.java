@@ -1,7 +1,7 @@
 package ecoach.kayttoliittyma;
 
+import ecoach.logiikka.OhjelmanInstanssi;
 import ecoach.logiikka.henkilo.*;
-import ecoach.tiedostonkasittely.TiedostonKasittelija;
 
 /**
  * Pelaajan käyttöliittymä johon päädytään sisäänkirjautumis
@@ -165,12 +165,7 @@ public class PelaajanPaasivu extends javax.swing.JFrame {
     }//GEN-LAST:event_linkkiLabelActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-
-        try {
-            TiedostonKasittelija.kirjoitaTiedostoon("masterOhjelmaServerilla.tmp");
-
-        } catch (Exception e) {
-        }
+        OhjelmanInstanssi.getInstance().tallennaOhjelma();
     }//GEN-LAST:event_formWindowClosed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

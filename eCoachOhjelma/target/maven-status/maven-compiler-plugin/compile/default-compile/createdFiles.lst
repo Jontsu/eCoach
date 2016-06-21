@@ -1,8 +1,8 @@
 ecoach/kayttoliittyma/OhjaajanPaasivu$8.class
 ecoach/logiikka/harjoitus/SuoritusTilasto.class
+ecoach/tiedonkasittely/OhjelmanTiedot.class
 ecoach/kayttoliittyma/OhjaajanPaasivu$3.class
 ecoach/kayttoliittyma/OhjaajanPaasivu$1.class
-ecoach/tiedostonkasittely/TiedostonKasittelija.class
 ecoach/kayttoliittyma/SisaanKirjautumissivu$3.class
 ecoach/kayttoliittyma/HarjoituksenLuominen$2.class
 ecoach/kayttoliittyma/OhjaajanPaasivu$10.class
@@ -10,6 +10,7 @@ ecoach/main/Main$1.class
 ecoach/logiikka/henkilo/Henkilo.class
 ecoach/kayttoliittyma/PelaajanPaasivu$3.class
 ecoach/kayttoliittyma/HarjoituksenLuominen$3.class
+ecoach/tiedonkasittely/TiedostonKasittelija.class
 ecoach/logiikka/henkilo/PelaajaLista.class
 ecoach/logiikka/harjoitus/Harjoitus.class
 ecoach/logiikka/henkilo/Ohjaaja.class

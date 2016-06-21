@@ -1,12 +1,14 @@
 package ecoach.logiikka.henkilo;
 
+import java.io.Serializable;
+
 /**
  * Ohjaaja luokka joka laajentaa henkilö luokkaa lisäämällä ohjaajalle
  * pelaajalistan. Kontrolloidaan OhjaajanPaasivu käyttöliittymän kautta.
  *
  * @author Jontsu
  */
-public class Ohjaaja extends Henkilo {
+public class Ohjaaja extends Henkilo implements Serializable {
 
     private PelaajaLista pelaajalista;
 

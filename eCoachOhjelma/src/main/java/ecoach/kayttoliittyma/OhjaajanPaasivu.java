@@ -3,7 +3,6 @@ package ecoach.kayttoliittyma;
 import ecoach.logiikka.*;
 import ecoach.logiikka.harjoitus.*;
 import ecoach.logiikka.henkilo.*;
-import ecoach.tiedostonkasittely.TiedostonKasittelija;
 
 /**
  * Ohjaajan käyttöliittymä johon päädytään sisäänkirjautumis
@@ -376,12 +375,7 @@ public class OhjaajanPaasivu extends javax.swing.JFrame {
     }//GEN-LAST:event_harjoitusLinkkiTxtActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-
-        try {
-            TiedostonKasittelija.kirjoitaTiedostoon("masterOhjelmaServerilla.tmp");
-
-        } catch (Exception e) {
-        }
+        OhjelmanInstanssi.getInstance().tallennaOhjelma();
     }//GEN-LAST:event_formWindowClosed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

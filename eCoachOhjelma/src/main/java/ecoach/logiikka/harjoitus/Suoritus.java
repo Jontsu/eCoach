@@ -1,12 +1,14 @@
 package ecoach.logiikka.harjoitus;
 
+import java.io.Serializable;
+
 /**
  * Harjoitukseen liityvä suoritus. Molemmat ohjaaja ja pelaaja käyttää tätä
  * käyttöliittymiensä kautta.
  *
  * @author Jontsu
  */
-public class Suoritus {
+public class Suoritus implements Serializable {
 
     private boolean suoritettu;
     private String suoritusLinkki;

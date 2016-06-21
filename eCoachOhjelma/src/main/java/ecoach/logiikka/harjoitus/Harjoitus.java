@@ -1,12 +1,14 @@
 package ecoach.logiikka.harjoitus;
 
+import java.io.Serializable;
+
 /**
  * Luokka harjoitusten luomista varten, kontrolloidaan OhjaajanPaasivu
  * käyttöliittymän kautta.
  *
  * @author Jontsu
  */
-public class Harjoitus {
+public class Harjoitus implements Serializable {
 
     private String nimi;
     private String kuvaus;

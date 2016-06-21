@@ -1,20 +1,12 @@
 package ecoach.kayttoliittyma;
 
 import ecoach.logiikka.*;
-import ecoach.tiedostonkasittely.*;
 import ecoach.logiikka.henkilo.*;
 
 public class SisaanKirjautumissivu extends javax.swing.JFrame {
 
     public SisaanKirjautumissivu() {
         initComponents();
-
-        try {
-            OhjelmanInstanssi.setInstance(TiedostonKasittelija.lueTiedostosta("masterOhjelmaServerilla.tmp"));
-
-        } catch (Exception e) {
-            OhjelmanInstanssi.getInstance();
-        }
     }
 
     @SuppressWarnings("unchecked")

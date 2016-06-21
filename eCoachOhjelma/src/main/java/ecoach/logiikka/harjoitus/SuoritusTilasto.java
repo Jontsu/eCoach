@@ -1,5 +1,6 @@
 package ecoach.logiikka.harjoitus;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -9,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author Jontsu
  */
-public class SuoritusTilasto {
+public class SuoritusTilasto implements Serializable {
 
     private ArrayList<Integer> suoritusTilasto;
 

@@ -1,5 +1,6 @@
 package ecoach.logiikka.henkilo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -7,7 +8,7 @@ import java.util.ArrayList;
  * Listan instanssi voidaan määrittää ohjaajalle ohjaajan käyttöliittymän
  * kautta.
  */
-public class PelaajaLista {
+public class PelaajaLista implements Serializable {
 
     private ArrayList<Pelaaja> pelaajalista;
 

@@ -2,6 +2,9 @@ package ecoach.logiikka;
 
 import ecoach.logiikka.henkilo.*;
 import ecoach.logiikka.harjoitus.*;
+import ecoach.tiedonkasittely.OhjelmanTiedot;
+import ecoach.tiedonkasittely.TiedostonKasittelija;
+import static ecoach.tiedonkasittely.TiedostonKasittelija.lueTiedostosta;
 
 /**
  * Luo ohjelmasta instanssin, varmistan vain yhden lähteen tiedolle. Tämän
@@ -10,6 +13,7 @@ import ecoach.logiikka.harjoitus.*;
 public class OhjelmanInstanssi {
 
     private static OhjelmanInstanssi ohjelmanInstanssi;
+    private OhjelmanTiedot tallennetutTiedot;
     private PelaajaLista pelaajatIlmanOhjaajaa;
     private PelaajaLista kaikkiPelaajat;
     private OhjaajaLista ohjaajaLista;
@@ -18,11 +22,22 @@ public class OhjelmanInstanssi {
 
     private OhjelmanInstanssi() {
 
-        pelaajatIlmanOhjaajaa = new PelaajaLista();
-        kaikkiPelaajat = new PelaajaLista();
-        ohjaajaLista = new OhjaajaLista();
-        harjoitusLista = new HarjoitusLista();
-        suoritusTilasto = new SuoritusTilasto();
+        try {
+            tallennetutTiedot = TiedostonKasittelija.lueTiedostosta("masterOhjelmaServerilla.tmp");
+            pelaajatIlmanOhjaajaa = tallennetutTiedot.getPelaajatIlmanOhjaajaa();
+            kaikkiPelaajat = tallennetutTiedot.getKaikkiPelaajat();
+            ohjaajaLista = tallennetutTiedot.getOhjaajaLista();
+            harjoitusLista = tallennetutTiedot.getHarjoitusLista();
+            suoritusTilasto = tallennetutTiedot.getSuoritusTilasto();
+
+        } catch (Exception e) {
+            System.out.println("lataamisessa virhe");
+            pelaajatIlmanOhjaajaa = new PelaajaLista();
+            kaikkiPelaajat = new PelaajaLista();
+            ohjaajaLista = new OhjaajaLista();
+            harjoitusLista = new HarjoitusLista();
+            suoritusTilasto = new SuoritusTilasto();
+        }
     }
 
     public static OhjelmanInstanssi getInstance() {
@@ -32,11 +47,6 @@ public class OhjelmanInstanssi {
         }
 
         return ohjelmanInstanssi;
-    }
-
-    public static void setInstance(OhjelmanInstanssi tallennettuInstanssi) {
-
-        ohjelmanInstanssi = tallennettuInstanssi;
     }
 
     public PelaajaLista getPelaajatIlmanOhjaajaa() {
@@ -62,5 +72,19 @@ public class OhjelmanInstanssi {
     public SuoritusTilasto getSuoritusTilasto() {
 
         return suoritusTilasto;
+    }
+
+    public void tallennaOhjelma() {
+
+        OhjelmanTiedot ohjelmanTiedot = new OhjelmanTiedot(
+                this.pelaajatIlmanOhjaajaa, this.kaikkiPelaajat,
+                this.ohjaajaLista, this.harjoitusLista, this.suoritusTilasto);
+
+        try {
+            TiedostonKasittelija.kirjoitaTiedostoon(ohjelmanTiedot, "masterOhjelmaServerilla.tmp");
+
+        } catch (Exception e) {
+            System.out.println("tallennuksessa virhe");
+        }
     }
 }
