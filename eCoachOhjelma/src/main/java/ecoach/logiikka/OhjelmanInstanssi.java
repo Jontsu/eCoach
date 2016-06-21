@@ -5,12 +5,13 @@ import ecoach.logiikka.harjoitus.*;
 import ecoach.tiedonkasittely.OhjelmanTiedot;
 import ecoach.tiedonkasittely.TiedostonKasittelija;
 import static ecoach.tiedonkasittely.TiedostonKasittelija.lueTiedostosta;
+import java.io.Serializable;
 
 /**
  * Luo ohjelmasta instanssin, varmistan vain yhden lähteen tiedolle. Tämän
  * avulla tietoa siirretään ohjelman sisällä eri olioiden kesken.
  */
-public class OhjelmanInstanssi {
+public class OhjelmanInstanssi implements Serializable {
 
     private static OhjelmanInstanssi ohjelmanInstanssi;
     private OhjelmanTiedot tallennetutTiedot;

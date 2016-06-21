@@ -1,7 +1,6 @@
 package ecoach.tiedonkasittely;
 
 import java.io.*;
-import ecoach.logiikka.*;
 
 /**
  * Tallentaa/avaa ohjelman tilanteen tiedostoon/tiedostosta

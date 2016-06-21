@@ -44,6 +44,19 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="suoritusNappi" max="32767" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="arvosanaLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="arvosanaTxt" min="-2" pref="60" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="keskiarvoLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jTextField2" min="-2" pref="60" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="maaraLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="maaraTxt" min="-2" pref="60" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -61,9 +74,18 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="kuvauksenPaneeli" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="linkkiLabel" min="-2" pref="35" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="keskiarvoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="arvosanaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="maaraLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="arvosanaTxt" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                  <Component id="jTextField2" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                  <Component id="maaraTxt" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="linkkiLabel" pref="35" max="32767" attributes="0"/>
                   <Component id="suoritusNappi" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
@@ -131,6 +153,27 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="suoritusNappiActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="keskiarvoLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pelaajien keskiarvo:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="arvosanaLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Arvosana:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="maaraLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Suoritusten m&#xe4;&#xe4;r&#xe4;:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="arvosanaTxt">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField2">
+    </Component>
+    <Component class="javax.swing.JTextField" name="maaraTxt">
     </Component>
   </SubComponents>
 </Form>

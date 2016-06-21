@@ -4,8 +4,9 @@ import ecoach.logiikka.harjoitus.HarjoitusLista;
 import ecoach.logiikka.harjoitus.SuoritusTilasto;
 import ecoach.logiikka.henkilo.OhjaajaLista;
 import ecoach.logiikka.henkilo.PelaajaLista;
+import java.io.Serializable;
 
-public class OhjelmanTiedot {
+public class OhjelmanTiedot implements Serializable {
 
     private PelaajaLista pelaajatIlmanOhjaajaa;
     private PelaajaLista kaikkiPelaajat;
