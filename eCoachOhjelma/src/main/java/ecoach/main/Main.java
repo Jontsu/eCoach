@@ -62,7 +62,7 @@ public class Main {
 
         pelaajanharkat.lisaaHarjoitus(harjoitus3);
         pelaajanharkat.lisaaHarjoitus(harjoitus2);
-        
+
         ohjaajalista.lisaaOhjaaja(ohjaaja);
         ohjaaja.lisaaPelaajaLista(kaikkiPelaajalista);
 

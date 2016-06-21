@@ -34,6 +34,11 @@ public class OhjelmanInstanssi {
         return ohjelmanInstanssi;
     }
 
+    public static void setInstance(OhjelmanInstanssi tallennettuInstanssi) {
+
+        ohjelmanInstanssi = tallennettuInstanssi;
+    }
+
     public PelaajaLista getPelaajatIlmanOhjaajaa() {
 
         return pelaajatIlmanOhjaajaa;

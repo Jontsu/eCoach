@@ -1,14 +1,20 @@
 package ecoach.kayttoliittyma;
 
 import ecoach.logiikka.*;
-import ecoach.logiikka.harjoitus.*;
+import ecoach.tiedostonkasittely.*;
 import ecoach.logiikka.henkilo.*;
-import javax.swing.*;
 
 public class SisaanKirjautumissivu extends javax.swing.JFrame {
 
     public SisaanKirjautumissivu() {
         initComponents();
+
+        try {
+            OhjelmanInstanssi.setInstance(TiedostonKasittelija.lueTiedostosta("masterOhjelmaServerilla.tmp"));
+
+        } catch (Exception e) {
+            OhjelmanInstanssi.getInstance();
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -149,7 +155,7 @@ public class SisaanKirjautumissivu extends javax.swing.JFrame {
 
         if (pelaajaNappi.isSelected()) {
             Pelaaja apuPelaaja = new Pelaaja(nimikeText.getText(), emailText.getText());
-            
+
             new PelaajanPaasivu(apuPelaaja).setVisible(true);
             super.dispose();
 

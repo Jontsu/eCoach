@@ -5,12 +5,12 @@
 /home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/henkilo/Pelaaja.java
 /home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/main/Main.java
 /home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/OhjelmanInstanssi.java
-/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/kayttoliittyma/Sisaankirjautumissivu.java
 /home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/harjoitus/Suoritus.java
+/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/kayttoliittyma/SisaanKirjautumissivu.java
 /home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/kayttoliittyma/PelaajanPaasivu.java
 /home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/henkilo/PelaajaLista.java
 /home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/kayttoliittyma/HarjoituksenLuominen.java
 /home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/harjoitus/Harjoitus.java
 /home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/harjoitus/SuoritusTilasto.java
-/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/TiedostonKasittelija.java
+/home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/tiedostonkasittely/TiedostonKasittelija.java
 /home/jo/GitProjects/eCoach/eCoachOhjelma/src/main/java/ecoach/logiikka/henkilo/Henkilo.java

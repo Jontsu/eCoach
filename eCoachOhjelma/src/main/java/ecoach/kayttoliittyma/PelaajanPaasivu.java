@@ -1,7 +1,7 @@
 package ecoach.kayttoliittyma;
 
 import ecoach.logiikka.henkilo.*;
-import javax.swing.*;
+import ecoach.tiedostonkasittely.TiedostonKasittelija;
 
 /**
  * Pelaajan käyttöliittymä johon päädytään sisäänkirjautumis
@@ -65,6 +65,11 @@ public class PelaajanPaasivu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(javax.swing.UIManager.getDefaults().getColor("ColorChooser.foreground"));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         harjoitusValikkoCBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,8 +143,7 @@ public class PelaajanPaasivu extends javax.swing.JFrame {
 
     private void harjoitusValikkoCBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_harjoitusValikkoCBoxActionPerformed
 
-        JComboBox apuCB = (JComboBox) evt.getSource();
-        valitunHarjoituksenIndeksi = (int) apuCB.getSelectedIndex();
+        valitunHarjoituksenIndeksi = harjoitusValikkoCBox.getSelectedIndex();
         this.tarkistaSuoritusStatus();
         this.paivitaKuvaus();
     }//GEN-LAST:event_harjoitusValikkoCBoxActionPerformed
@@ -159,6 +163,15 @@ public class PelaajanPaasivu extends javax.swing.JFrame {
     private void linkkiLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_linkkiLabelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_linkkiLabelActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+
+        try {
+            TiedostonKasittelija.kirjoitaTiedostoon("masterOhjelmaServerilla.tmp");
+
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_formWindowClosed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea harjoituksenKuvaus;
