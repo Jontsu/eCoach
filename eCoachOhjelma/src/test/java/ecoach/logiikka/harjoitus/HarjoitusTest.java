@@ -37,28 +37,4 @@ public class HarjoitusTest {
 
         assertFalse(harjoitus.getSuoritus().suoritusStatus());
     }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void parametriValidoriToimii() {
-
-        harjoitus.parametriValidori(null, 0);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void huonoNimiSyoteAntaaPoikkeuksen() {
-
-        harjoitus.setNimi("a");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void huonoKuvausSyoteAntaaPoikkeuksen() {
-
-        harjoitus.setKuvaus("a");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void huonoLinkkiSyoteAntaaPoikkeuksen() {
-
-        harjoitus.setHarjoitusLinkki("a");
-    }
 }

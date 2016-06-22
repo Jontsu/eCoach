@@ -38,9 +38,9 @@ public class Ohjaaja extends Henkilo implements Serializable {
 
         return this.pelaajalista;
     }
-
+    
     @Override
-    public String toString() {
-        return "Ohjaaja: " + this.getNimike() + ", " + this.getEmail();
+    public boolean equals(Object olio) {
+        return super.equals(olio);
     }
 }

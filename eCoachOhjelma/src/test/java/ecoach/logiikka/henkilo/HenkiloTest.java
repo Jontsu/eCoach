@@ -19,13 +19,15 @@ public class HenkiloTest {
 
     @Test
     public void konstruktoriAntaaNimikkeenJaMailinOikein() {
-        assertEquals("henkilo, henkilo@mail.com", henkilo.toString());
+        assertEquals("henkilo", henkilo.getNimike());
+        assertEquals("henkilo@mail.com", henkilo.getEmail());
     }
-    
+
     @Test
     public void henkilonTietojaVoiMuokata() {
         henkilo.setNimike("henkilo1");
         henkilo.setEmail("henkilo1@mail.com");
-        assertEquals("henkilo1, henkilo1@mail.com", henkilo.toString());
+        assertEquals("henkilo1", henkilo.getNimike());
+        assertEquals("henkilo1@mail.com", henkilo.getEmail());
     }
 }

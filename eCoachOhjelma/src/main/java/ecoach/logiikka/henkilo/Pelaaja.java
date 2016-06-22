@@ -43,7 +43,7 @@ public class Pelaaja extends Henkilo implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return "Pelaaja: " + this.getNimike() + ", " + this.getEmail();
+    public boolean equals(Object olio) {
+        return super.equals(olio);
     }
 }

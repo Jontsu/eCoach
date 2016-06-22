@@ -36,8 +36,6 @@ public class Harjoitus implements Serializable {
      */
     public void setNimi(String nimi) {
 
-        parametriValidori(nimi, 5);
-
         this.nimi = nimi;
     }
 
@@ -49,8 +47,6 @@ public class Harjoitus implements Serializable {
      */
     public void setKuvaus(String kuvaus) {
 
-        parametriValidori(kuvaus, 30);
-
         this.kuvaus = kuvaus;
     }
 
@@ -61,8 +57,6 @@ public class Harjoitus implements Serializable {
      * @param harjoitusLinkki String syöte.
      */
     public void setHarjoitusLinkki(String harjoitusLinkki) {
-
-        parametriValidori(harjoitusLinkki, 10);
 
         this.harjoitusLinkki = harjoitusLinkki;
     }
@@ -87,23 +81,22 @@ public class Harjoitus implements Serializable {
         return this.suoritus;
     }
 
-    /**
-     * Parametrivalidori metodi, jota muut metodit kutsuu tarkistaakseen, että
-     * syötteet eivät ole null arvoja, tyhjiä tai ole liian lyhyitä.
-     *
-     * @param parametri trakistettava parametri String syötteenä.
-     * @param minPituus tarkistettavan parametrin minimi pituus integer
-     * syötteenä.
-     */
-    public static void parametriValidori(String parametri, int minPituus) {
-
-        if (parametri == null || parametri.isEmpty() || parametri.length() < minPituus) {
-            throw new IllegalArgumentException(parametri + " syöte ei ole oikein");
-        }
-    }
-
     @Override
-    public String toString() {
-        return "Harjoitus: " + this.nimi + ", " + this.harjoitusLinkki;
+    public boolean equals(Object olio) {
+        if (olio == null) {
+            return false;
+        }
+
+        if (getClass() != olio.getClass()) {
+            return false;
+        }
+
+        Harjoitus verrattava = (Harjoitus) olio;
+
+        if (this.nimi == null || !this.nimi.equals(verrattava.getNimi())) {
+            return false;
+        }
+
+        return true;
     }
 }

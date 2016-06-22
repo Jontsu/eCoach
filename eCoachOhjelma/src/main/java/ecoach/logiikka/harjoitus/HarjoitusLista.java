@@ -47,8 +47,8 @@ public class HarjoitusLista implements Serializable {
 
         for (int i = 0; i < this.harjoituslista.size(); i++) {
 
-            if (this.harjoituslista.get(i).getNimi().equals(harjoitus.getNimi())) {
-                return this.harjoituslista.get(i);
+            if (this.harjoituslista.get(i).equals(harjoitus)) {
+                return harjoitus;
             }
         }
 

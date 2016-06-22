@@ -5,8 +5,12 @@ import ecoach.logiikka.henkilo.*;
 
 public class SisaanKirjautumissivu extends javax.swing.JFrame {
 
+    Henkilo apuHenkilo;
+
     public SisaanKirjautumissivu() {
         initComponents();
+        OhjelmanInstanssi.getInstance();
+        apuHenkilo = null;
     }
 
     @SuppressWarnings("unchecked")
@@ -117,70 +121,42 @@ public class SisaanKirjautumissivu extends javax.swing.JFrame {
 
     private void kirjauduNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kirjauduNappiActionPerformed
 
-        OhjelmanInstanssi.getInstance();
-
         if (pelaajaNappi.isSelected()) {
 
-            for (int i = 0; i < OhjelmanInstanssi.getInstance().getKaikkiPelaajat().getPelaajaLista().size(); i++) {
+            System.out.println(OhjelmanInstanssi.getInstance().getKaikkiPelaajat().onkoPelaajaListassa((Pelaaja) apuHenkilo));
 
-                Pelaaja apuPelaaja = OhjelmanInstanssi.getInstance().getKaikkiPelaajat().getPelaajaLista().get(i);
-
-                if (apuPelaaja.getNimike().equals(nimikeText.getText()) && apuPelaaja.getEmail().equals(emailText.getText())) {
-                    new PelaajanPaasivu(apuPelaaja).setVisible(true);
-                    super.dispose();
-                }
+            if (OhjelmanInstanssi.getInstance().getKaikkiPelaajat().onkoPelaajaListassa((Pelaaja) apuHenkilo) == true) {
+                new PelaajanPaasivu((Pelaaja) apuHenkilo).setVisible(true);
+                super.dispose();
             }
 
         } else if (ohjaajaNappi.isSelected()) {
 
-            for (int i = 0; i < OhjelmanInstanssi.getInstance().getOhjaajaLista().getOhjaajaLista().size(); i++) {
-
-                Ohjaaja apuOhjaaja = OhjelmanInstanssi.getInstance().getOhjaajaLista().getOhjaajaLista().get(i);
-
-                if (apuOhjaaja.getNimike().equals(nimikeText.getText()) && apuOhjaaja.getEmail().equals(emailText.getText())) {
-                    new OhjaajanPaasivu(apuOhjaaja).setVisible(true);
-                    super.dispose();
-                }
+            if (OhjelmanInstanssi.getInstance().getOhjaajaLista().onkoOhjaajaListassa((Ohjaaja) apuHenkilo) == true) {
+                new OhjaajanPaasivu((Ohjaaja) apuHenkilo).setVisible(true);
+                super.dispose();
             }
         }
     }//GEN-LAST:event_kirjauduNappiActionPerformed
 
     private void uusiKayttajaNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uusiKayttajaNappiActionPerformed
 
-        int apuTotuusArvo = 0;
-
         if (pelaajaNappi.isSelected()) {
 
-            for (int i = 0; i < OhjelmanInstanssi.getInstance().getKaikkiPelaajat().getPelaajaLista().size(); i++) {
+            if (OhjelmanInstanssi.getInstance().getKaikkiPelaajat().onkoPelaajaListassa((Pelaaja) apuHenkilo) == false) {
+                OhjelmanInstanssi.getInstance().getKaikkiPelaajat().lisaaPelaaja((Pelaaja) apuHenkilo);
+                OhjelmanInstanssi.getInstance().getPelaajatIlmanOhjaajaa().lisaaPelaaja((Pelaaja) apuHenkilo);
 
-                if (nimikeText.getText().equals(OhjelmanInstanssi.getInstance().getKaikkiPelaajat().getPelaajaLista().get(i).getNimike())) {
-                    apuTotuusArvo = 1;
-                }
-            }
-
-            if (apuTotuusArvo == 0) {
-                Pelaaja apuPelaaja = new Pelaaja(nimikeText.getText(), emailText.getText());
-                OhjelmanInstanssi.getInstance().getKaikkiPelaajat().lisaaPelaaja(apuPelaaja);
-                OhjelmanInstanssi.getInstance().getPelaajatIlmanOhjaajaa().lisaaPelaaja(apuPelaaja);
-
-                new PelaajanPaasivu(apuPelaaja).setVisible(true);
+                new PelaajanPaasivu((Pelaaja) apuHenkilo).setVisible(true);
                 super.dispose();
             }
 
         } else if (ohjaajaNappi.isSelected()) {
 
-            for (int i = 0; i < OhjelmanInstanssi.getInstance().getOhjaajaLista().getOhjaajaLista().size(); i++) {
+            if (OhjelmanInstanssi.getInstance().getOhjaajaLista().onkoOhjaajaListassa((Ohjaaja) apuHenkilo) == false) {
+                OhjelmanInstanssi.getInstance().getOhjaajaLista().lisaaOhjaaja((Ohjaaja) apuHenkilo);
 
-                if (nimikeText.getText().equals(OhjelmanInstanssi.getInstance().getOhjaajaLista().getOhjaajaLista().get(i).getNimike())) {
-                    apuTotuusArvo = 1;
-                }
-            }
-
-            if (apuTotuusArvo == 0) {
-                Ohjaaja apuOhjaaja = new Ohjaaja(nimikeText.getText(), emailText.getText());
-                OhjelmanInstanssi.getInstance().getOhjaajaLista().lisaaOhjaaja(apuOhjaaja);
-
-                new OhjaajanPaasivu(apuOhjaaja).setVisible(true);
+                new OhjaajanPaasivu((Ohjaaja) apuHenkilo).setVisible(true);
                 super.dispose();
             }
         }
@@ -188,18 +164,18 @@ public class SisaanKirjautumissivu extends javax.swing.JFrame {
 
     private void ohjaajaNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ohjaajaNappiActionPerformed
 
-        if (pelaajaNappi.isSelected()) {
-            ohjaajaNappi.setSelected(true);
-            pelaajaNappi.setSelected(false);
-        }
+        apuHenkilo = new Ohjaaja(nimikeText.getText(), emailText.getText());
+        OhjelmanInstanssi.getInstance().getOhjaajaLista().getOhjaajaListasta((Ohjaaja) apuHenkilo);
+        ohjaajaNappi.setSelected(true);
+        pelaajaNappi.setSelected(false);
     }//GEN-LAST:event_ohjaajaNappiActionPerformed
 
     private void pelaajaNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pelaajaNappiActionPerformed
 
-        if (ohjaajaNappi.isSelected()) {
-            pelaajaNappi.setSelected(true);
-            ohjaajaNappi.setSelected(false);
-        }
+        apuHenkilo = new Pelaaja(nimikeText.getText(), emailText.getText());
+        OhjelmanInstanssi.getInstance().getKaikkiPelaajat().getPelaajaListasta((Pelaaja) apuHenkilo);
+        pelaajaNappi.setSelected(true);
+        ohjaajaNappi.setSelected(false);
     }//GEN-LAST:event_pelaajaNappiActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
