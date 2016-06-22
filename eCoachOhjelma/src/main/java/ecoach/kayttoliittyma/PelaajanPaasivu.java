@@ -1,6 +1,7 @@
 package ecoach.kayttoliittyma;
 
-import ecoach.logiikka.OhjelmanInstanssi;
+import ecoach.logiikka.harjoitus.HarjoitusLista;
+import ecoach.tiedonkasittely.OhjelmanInstanssi;
 import ecoach.logiikka.henkilo.*;
 
 /**
@@ -20,13 +21,19 @@ public class PelaajanPaasivu extends javax.swing.JFrame {
 
         if (this.pelaaja.getHarjoitusLista() != null) {
 
-            for (int i = 0; i < pelaaja.getHarjoitusLista().getHarjoitusLista().size(); i++) {
-                harjoitusValikkoCBox.addItem(pelaaja.getHarjoitusLista().getHarjoitusLista().get(i).getNimi());
+            if (pelaaja.getHarjoitusLista().getHarjoitusLista().size() > 0) {
+
+                for (int i = 0; i < pelaaja.getHarjoitusLista().getHarjoitusLista().size(); i++) {
+                    harjoitusValikkoCBox.addItem(pelaaja.getHarjoitusLista().getHarjoitusLista().get(i).getNimi());
+                }
+
+                harjoitusValikkoCBox.setSelectedIndex(valitunHarjoituksenIndeksi);
+
+                this.tarkistaSuoritusStatus();
             }
 
-            harjoitusValikkoCBox.setSelectedIndex(valitunHarjoituksenIndeksi);
-
-            this.tarkistaSuoritusStatus();
+        } else {
+            this.pelaaja.lisaaHarjoitusLista(new HarjoitusLista());
         }
     }
 
@@ -72,6 +79,9 @@ public class PelaajanPaasivu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(javax.swing.UIManager.getDefaults().getColor("ColorChooser.foreground"));
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
             }
@@ -199,6 +209,10 @@ public class PelaajanPaasivu extends javax.swing.JFrame {
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         OhjelmanInstanssi.getInstance().tallennaOhjelma();
     }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        OhjelmanInstanssi.getInstance().tallennaOhjelma();
+    }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel arvosanaLabel;

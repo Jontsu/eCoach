@@ -1,6 +1,6 @@
 package ecoach.kayttoliittyma;
 
-import ecoach.logiikka.*;
+import ecoach.tiedonkasittely.OhjelmanInstanssi;
 import ecoach.logiikka.harjoitus.*;
 import ecoach.logiikka.henkilo.*;
 
@@ -9,35 +9,35 @@ import ecoach.logiikka.henkilo.*;
  * käyttöliittymäsivulta.
  */
 public class OhjaajanPaasivu extends javax.swing.JFrame {
-
+    
     private Ohjaaja ohjaaja;
     private HarjoitusLista kaikkiHarjoitukset;
     private PelaajaLista pelaajatIlmanOhjaajaa;
     private Pelaaja valittuPelaaja;
     private int apuIndeksi;
-
+    
     public OhjaajanPaasivu(Ohjaaja ohjaaja) {
-
+        
         initComponents();
-
+        
         this.ohjaaja = ohjaaja;
         this.kaikkiHarjoitukset = OhjelmanInstanssi.getInstance().getHarjoitusLista();
         this.pelaajatIlmanOhjaajaa = OhjelmanInstanssi.getInstance().getPelaajatIlmanOhjaajaa();
         this.valittuPelaaja = null;
         this.apuIndeksi = 0;
-
+        
         paivitaOhjaajanCB();
     }
-
+    
     public final void paivitaOhjaajanCB() {
 
         // lisätään ohjaajan pelaajat comboboxiin
         if (ohjaaja.getPelaajaLista() == null) {
             ohjaaja.lisaaPelaajaLista(new PelaajaLista());
         }
-
+        
         for (int i = 0; i < ohjaaja.getPelaajaLista().getPelaajaLista().size(); i++) {
-
+            
             if (ohjaajanPelaajatCB.getItemAt(i) == null || !ohjaajanPelaajatCB.getItemAt(i).equals(ohjaaja.getPelaajaLista().getPelaajaLista().get(i).getNimike())) {
                 ohjaajanPelaajatCB.addItem(ohjaaja.getPelaajaLista().getPelaajaLista().get(i).getNimike());
             }
@@ -45,7 +45,7 @@ public class OhjaajanPaasivu extends javax.swing.JFrame {
 
         // lisätään kaikki harjoitukset comboboxiin        
         for (int i = 0; i < kaikkiHarjoitukset.getHarjoitusLista().size(); i++) {
-
+            
             if (kaikkiHarjoituksetCB.getItemAt(i) == null || !kaikkiHarjoituksetCB.getItemAt(i).equals(kaikkiHarjoitukset.getHarjoitusLista().get(i).getNimi())) {
                 kaikkiHarjoituksetCB.addItem(kaikkiHarjoitukset.getHarjoitusLista().get(i).getNimi());
             }
@@ -53,56 +53,64 @@ public class OhjaajanPaasivu extends javax.swing.JFrame {
 
         // lisätään pelaajat ilman ohjaajaa comboboxiin
         for (int i = 0; i < pelaajatIlmanOhjaajaa.getPelaajaLista().size(); i++) {
-
+            
             if (pelaajatIlmanOhjaajaaCB.getItemAt(i) == null || !pelaajatIlmanOhjaajaaCB.getItemAt(i).equals(pelaajatIlmanOhjaajaa.getPelaajaLista().get(i).getNimike())) {
                 pelaajatIlmanOhjaajaaCB.addItem(pelaajatIlmanOhjaajaa.getPelaajaLista().get(i).getNimike());
             }
         }
+
+        // tehdään ei muutettavista kentistä vain luku kenttiä
+        harjoitusLinkkiTxt.setEditable(false);
+        harjoituksenKuvausTA.setEditable(false);
+        palautusLinkkiField.setEditable(false);
     }
-
+    
     public void paivitaPelaajanHarjoitusCB() {
-
+        
         if (!ohjaaja.getPelaajaLista().getPelaajaLista().isEmpty()) {
-
+            
             valittuPelaaja = ohjaaja.getPelaajaLista().getPelaajaLista().get(ohjaajanPelaajatCB.getSelectedIndex());
-
+            
             if (valittuPelaaja.getHarjoitusLista() == null) {
                 valittuPelaaja.lisaaHarjoitusLista(new HarjoitusLista());
             }
-
+            
             if (pelaajanHarjoituksetCB.getSelectedIndex() != -1) {
                 pelaajanHarjoituksetCB.removeAllItems();
             }
-
+            
             for (int i = 0; i < valittuPelaaja.getHarjoitusLista().getHarjoitusLista().size(); i++) {
-
+                
                 if (pelaajanHarjoituksetCB.getItemAt(i) == null) {
                     pelaajanHarjoituksetCB.addItem(valittuPelaaja.getHarjoitusLista().getHarjoitusLista().get(i).getNimi());
                 }
             }
         }
     }
-
+    
     public void paivitaHarjoituksenTiedot() {
-
+        
+        harjoitusLinkkiTxt.setText("");
+        harjoituksenKuvausTA.setText("");
+        
         if (pelaajanHarjoituksetCB.getSelectedIndex() != -1) {
-
+            
             apuIndeksi = pelaajanHarjoituksetCB.getSelectedIndex();
             harjoitusLinkkiTxt.setText(valittuPelaaja.getHarjoitusLista().getHarjoitusLista().get(apuIndeksi).getLinkki());
             harjoituksenKuvausTA.setText(valittuPelaaja.getHarjoitusLista().getHarjoitusLista().get(apuIndeksi).getKuvaus());
-
+            
             if (valittuPelaaja.getHarjoitusLista().getHarjoitusLista().get(apuIndeksi).getSuoritus().suoritusStatus() == true) {
                 palautusLinkkiField.setText(valittuPelaaja.getHarjoitusLista().getHarjoitusLista().get(apuIndeksi).getSuoritus().getSuoritusLinkki());
-
+                
             } else {
                 palautusLinkkiField.setText("Ei palautusta");
             }
-
+            
             if (valittuPelaaja.getHarjoitusLista().getHarjoitusLista().get(apuIndeksi).getSuoritus().getArvosana() == -1) {
                 arvosteltuNappi.setEnabled(true);
                 arvosanaCB.setEnabled(true);
                 arvosanaCB.setSelectedIndex(0);
-
+                
             } else {
                 arvosteltuNappi.setEnabled(false);
                 arvosanaCB.setSelectedIndex(valittuPelaaja.getHarjoitusLista().getHarjoitusLista().get(apuIndeksi).getSuoritus().getArvosana() - 1);
@@ -110,7 +118,7 @@ public class OhjaajanPaasivu extends javax.swing.JFrame {
             }
         }
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -380,21 +388,21 @@ public class OhjaajanPaasivu extends javax.swing.JFrame {
     }//GEN-LAST:event_palautusLinkkiFieldActionPerformed
 
     private void arvosteltuNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arvosteltuNappiActionPerformed
-
+        
         valittuPelaaja.getHarjoitusLista().getHarjoitusLista().get(apuIndeksi).getSuoritus().setArvosana(arvosanaCB.getSelectedIndex() + 1);
         paivitaHarjoituksenTiedot();
     }//GEN-LAST:event_arvosteltuNappiActionPerformed
 
     private void luoUusiHarjoitusNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_luoUusiHarjoitusNappiActionPerformed
-
+        
         new HarjoituksenLuominen(this.ohjaaja).setVisible(true);
         super.dispose();
     }//GEN-LAST:event_luoUusiHarjoitusNappiActionPerformed
 
     private void lisaaHarjoitusNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lisaaHarjoitusNappiActionPerformed
-
+        
         if (valittuPelaaja != null && valittuPelaaja.getHarjoitusLista() != null) {
-
+            
             if (!valittuPelaaja.getHarjoitusLista().getHarjoitusLista().contains(kaikkiHarjoitukset.getHarjoitusLista().get(kaikkiHarjoituksetCB.getSelectedIndex()))) {
                 valittuPelaaja.getHarjoitusLista().lisaaHarjoitus(kaikkiHarjoitukset.getHarjoitusLista().get(kaikkiHarjoituksetCB.getSelectedIndex()));
                 pelaajanHarjoituksetCB.addItem(kaikkiHarjoitukset.getHarjoitusLista().get(kaikkiHarjoituksetCB.getSelectedIndex()).getNimi());
@@ -411,17 +419,17 @@ public class OhjaajanPaasivu extends javax.swing.JFrame {
     }//GEN-LAST:event_kaikkiHarjoituksetCBActionPerformed
 
     private void ohjaajanPelaajatCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ohjaajanPelaajatCBActionPerformed
-
+        
         paivitaPelaajanHarjoitusCB();
     }//GEN-LAST:event_ohjaajanPelaajatCBActionPerformed
 
     private void pelaajanHarjoituksetCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pelaajanHarjoituksetCBActionPerformed
-
+        
         paivitaHarjoituksenTiedot();
     }//GEN-LAST:event_pelaajanHarjoituksetCBActionPerformed
 
     private void lisaaOhjattavaksiNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lisaaOhjattavaksiNappiActionPerformed
-
+        
         if (!pelaajatIlmanOhjaajaa.getPelaajaLista().isEmpty()) {
             apuIndeksi = pelaajatIlmanOhjaajaaCB.getSelectedIndex();
             ohjaaja.getPelaajaLista().lisaaPelaaja(pelaajatIlmanOhjaajaa.getPelaajaLista().get(apuIndeksi));

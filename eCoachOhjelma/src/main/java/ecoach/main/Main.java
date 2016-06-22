@@ -2,7 +2,7 @@
 package ecoach.main;
 
 import ecoach.kayttoliittyma.*;
-import ecoach.logiikka.OhjelmanInstanssi;
+import ecoach.tiedonkasittely.OhjelmanInstanssi;
 import ecoach.logiikka.harjoitus.*;
 import ecoach.logiikka.henkilo.*;
 

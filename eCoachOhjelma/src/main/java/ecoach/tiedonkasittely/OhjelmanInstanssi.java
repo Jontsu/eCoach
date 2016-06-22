@@ -1,4 +1,4 @@
-package ecoach.logiikka;
+package ecoach.tiedonkasittely;
 
 import ecoach.logiikka.henkilo.*;
 import ecoach.logiikka.harjoitus.*;
@@ -25,16 +25,16 @@ public class OhjelmanInstanssi implements Serializable {
 
         try {
             tallennetutTiedot = TiedostonKasittelija.lueTiedostosta("masterOhjelmaServerilla.tmp");
-            pelaajatIlmanOhjaajaa = tallennetutTiedot.getPelaajatIlmanOhjaajaa();
             kaikkiPelaajat = tallennetutTiedot.getKaikkiPelaajat();
+            pelaajatIlmanOhjaajaa = tallennetutTiedot.getPelaajatIlmanOhjaajaa();
             ohjaajaLista = tallennetutTiedot.getOhjaajaLista();
             harjoitusLista = tallennetutTiedot.getHarjoitusLista();
             suoritusTilasto = tallennetutTiedot.getSuoritusTilasto();
 
         } catch (Exception e) {
-            System.out.println("lataamisessa virhe");
-            pelaajatIlmanOhjaajaa = new PelaajaLista();
+            System.out.println(e.getMessage());
             kaikkiPelaajat = new PelaajaLista();
+            pelaajatIlmanOhjaajaa = new PelaajaLista();
             ohjaajaLista = new OhjaajaLista();
             harjoitusLista = new HarjoitusLista();
             suoritusTilasto = new SuoritusTilasto();
@@ -85,7 +85,7 @@ public class OhjelmanInstanssi implements Serializable {
             TiedostonKasittelija.kirjoitaTiedostoon(ohjelmanTiedot, "masterOhjelmaServerilla.tmp");
 
         } catch (Exception e) {
-            System.out.println("tallennuksessa virhe");
+            System.out.println(e.getMessage());
         }
     }
 }
