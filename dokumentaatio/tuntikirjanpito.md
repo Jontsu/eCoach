@@ -22,3 +22,7 @@ Päivä | Tunnit | Kuvaus
 17.06.2016 | 3.0h | Instanssi luokan teko ja yhdistäminen ohjelmaan
 18.06.2016 | 7.0h | Ohjaajan jFramen toiminnallisuuden ongelmien ratkomista
 19.06.2016 | 6.0h | Sisäänkirjautumis jFramen toteutus ja jFramejen yhdistäminen
+20.06.2016 | 4.0h | jFramejen yhdistämisen jatkaminen
+21.06.2016 | 5.0h | jFramejen yhdistämisen jatkaminen ja bugien korjaamista, etäpajaa
+22.06.2016 | 8.0h | Bugien korjausta ja parempien ratkaisujen tekemistä.Jouduin palauttamaan ohjelman aikaisempaan versioon ja ns. paremmat ratkaisut jäi tästä syystä tekemättä, etäpajaa
+23.06.2016 | 5.0h | Testit, checkstyle, pit, jar luonti, dokumentaatio, jne

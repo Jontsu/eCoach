@@ -1,12 +1,13 @@
 package ecoach.kayttoliittyma;
 
-import ecoach.logiikka.harjoitus.HarjoitusLista;
 import ecoach.tiedonkasittely.OhjelmanInstanssi;
 import ecoach.logiikka.henkilo.*;
 
 /**
  * Pelaajan käyttöliittymä johon päädytään sisäänkirjautumis
  * käyttöliittymäsivulta.
+ *
+ * @author Jontsu
  */
 public class PelaajanPaasivu extends javax.swing.JFrame {
 
@@ -18,9 +19,14 @@ public class PelaajanPaasivu extends javax.swing.JFrame {
         initComponents();
         this.pelaaja = pelaaja;
         this.valitunHarjoituksenIndeksi = 0;
+        harjoituksenLinkkiTxt.setEditable(false);
+        harjoituksenKuvaus.setEditable(false);
+        arvosanaTxt.setEditable(false);
+        keskiarvoTxt.setEditable(false);
+        keskiarvoTxt.setText("" + OhjelmanInstanssi.getInstance().getSuoritusTilasto().tilastonKeskiarvo());
 
         if (this.pelaaja.getHarjoitusLista() != null) {
-
+            System.out.println("totta");
             if (pelaaja.getHarjoitusLista().getHarjoitusLista().size() > 0) {
 
                 for (int i = 0; i < pelaaja.getHarjoitusLista().getHarjoitusLista().size(); i++) {
@@ -31,18 +37,20 @@ public class PelaajanPaasivu extends javax.swing.JFrame {
 
                 this.tarkistaSuoritusStatus();
             }
-
-        } else {
-            this.pelaaja.lisaaHarjoitusLista(new HarjoitusLista());
         }
     }
 
-    public final void tarkistaSuoritusStatus() {
+    private void tarkistaSuoritusStatus() {
 
         if (pelaaja.getHarjoitusLista().getHarjoitusLista().get(valitunHarjoituksenIndeksi).getSuoritus().suoritusStatus() == true) {
             suoritusNappi.setEnabled(false);
             linkkiLabel.setText(pelaaja.getHarjoitusLista().getHarjoitusLista().get(valitunHarjoituksenIndeksi).getSuoritus().getSuoritusLinkki());
             linkkiLabel.setEditable(false);
+
+            if (pelaaja.getHarjoitusLista().getHarjoitusLista().get(valitunHarjoituksenIndeksi).getSuoritus().getArvosana() != -1) {
+                arvosanaTxt.setText("" + pelaaja.getHarjoitusLista().getHarjoitusLista().get(valitunHarjoituksenIndeksi).getSuoritus().getArvosana());
+            }
+
         } else {
             suoritusNappi.setEnabled(true);
             linkkiLabel.setText("Lisää tähän suoritus nauhoituksen linkki");
@@ -50,12 +58,10 @@ public class PelaajanPaasivu extends javax.swing.JFrame {
         }
     }
 
-    public final void paivitaKuvaus() {
+    private void paivitaHarjoituksenTiedot() {
 
-        String apuString;
-        apuString = pelaaja.getHarjoitusLista().getHarjoitusLista().get(valitunHarjoituksenIndeksi).getKuvaus();
-        harjoituksenKuvaus.setText(apuString);
-        harjoituksenKuvaus.setEditable(false);
+        harjoituksenKuvaus.setText(pelaaja.getHarjoitusLista().getHarjoitusLista().get(valitunHarjoituksenIndeksi).getKuvaus());
+        harjoituksenLinkkiTxt.setText(pelaaja.getHarjoitusLista().getHarjoitusLista().get(valitunHarjoituksenIndeksi).getLinkki());
     }
 
     @SuppressWarnings("unchecked")
@@ -71,10 +77,11 @@ public class PelaajanPaasivu extends javax.swing.JFrame {
         suoritusNappi = new javax.swing.JButton();
         keskiarvoLabel = new javax.swing.JLabel();
         arvosanaLabel = new javax.swing.JLabel();
-        maaraLabel = new javax.swing.JLabel();
         arvosanaTxt = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        maaraTxt = new javax.swing.JTextField();
+        keskiarvoTxt = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        harjoituksenLinkkiLbl = new javax.swing.JLabel();
+        harjoituksenLinkkiTxt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(javax.swing.UIManager.getDefaults().getColor("ColorChooser.foreground"));
@@ -93,7 +100,6 @@ public class PelaajanPaasivu extends javax.swing.JFrame {
             }
         });
 
-        linkkiLabel.setText("Lisää tähän suoritus nauhoituksen linkki");
         linkkiLabel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 linkkiLabelActionPerformed(evt);
@@ -117,11 +123,25 @@ public class PelaajanPaasivu extends javax.swing.JFrame {
             }
         });
 
-        keskiarvoLabel.setText("Pelaajien keskiarvo:");
+        keskiarvoLabel.setText("Pelaajien kaikkien harjoitusten suoritusten keskiarvo:");
 
         arvosanaLabel.setText("Arvosana:");
 
-        maaraLabel.setText("Suoritusten määrä:");
+        arvosanaTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arvosanaTxtActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Suorituksen nauhoituksen linkki:");
+
+        harjoituksenLinkkiLbl.setText("Harjoituksen linkki:");
+
+        harjoituksenLinkkiTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                harjoituksenLinkkiTxtActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,26 +152,32 @@ public class PelaajanPaasivu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(otsikkoLoL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(kuvauksenPaneeli, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(harjoitusValikkoCBnOtsikko, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                        .addGap(4, 4, 4)
-                        .addComponent(harjoitusValikkoCBox, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(linkkiLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(suoritusNappi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 379, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(harjoitusValikkoCBnOtsikko, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(4, 4, 4))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(harjoituksenLinkkiLbl)
+                                .addGap(49, 49, 49)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(harjoitusValikkoCBox, 0, 423, Short.MAX_VALUE)
+                            .addComponent(harjoituksenLinkkiTxt)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(arvosanaLabel)
                         .addGap(18, 18, 18)
                         .addComponent(arvosanaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(keskiarvoLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(maaraLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(maaraTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(keskiarvoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -163,17 +189,21 @@ public class PelaajanPaasivu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(harjoitusValikkoCBox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(harjoitusValikkoCBnOtsikko, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(kuvauksenPaneeli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(keskiarvoLabel)
-                    .addComponent(arvosanaLabel)
-                    .addComponent(maaraLabel)
-                    .addComponent(arvosanaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(maaraTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(harjoituksenLinkkiLbl)
+                    .addComponent(harjoituksenLinkkiTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(kuvauksenPaneeli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(arvosanaLabel)
+                    .addComponent(arvosanaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(keskiarvoLabel)
+                    .addComponent(keskiarvoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(linkkiLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                     .addComponent(suoritusNappi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -187,7 +217,7 @@ public class PelaajanPaasivu extends javax.swing.JFrame {
 
         valitunHarjoituksenIndeksi = harjoitusValikkoCBox.getSelectedIndex();
         this.tarkistaSuoritusStatus();
-        this.paivitaKuvaus();
+        this.paivitaHarjoituksenTiedot();
     }//GEN-LAST:event_harjoitusValikkoCBoxActionPerformed
 
     private void suoritusNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suoritusNappiActionPerformed
@@ -214,18 +244,27 @@ public class PelaajanPaasivu extends javax.swing.JFrame {
         OhjelmanInstanssi.getInstance().tallennaOhjelma();
     }//GEN-LAST:event_formWindowClosing
 
+    private void arvosanaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arvosanaTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_arvosanaTxtActionPerformed
+
+    private void harjoituksenLinkkiTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_harjoituksenLinkkiTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_harjoituksenLinkkiTxtActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel arvosanaLabel;
     private javax.swing.JTextField arvosanaTxt;
     private javax.swing.JTextArea harjoituksenKuvaus;
+    private javax.swing.JLabel harjoituksenLinkkiLbl;
+    private javax.swing.JTextField harjoituksenLinkkiTxt;
     private javax.swing.JLabel harjoitusValikkoCBnOtsikko;
     private javax.swing.JComboBox<String> harjoitusValikkoCBox;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel keskiarvoLabel;
+    private javax.swing.JTextField keskiarvoTxt;
     private javax.swing.JScrollPane kuvauksenPaneeli;
     private javax.swing.JTextField linkkiLabel;
-    private javax.swing.JLabel maaraLabel;
-    private javax.swing.JTextField maaraTxt;
     private javax.swing.JLabel otsikkoLoL;
     private javax.swing.JButton suoritusNappi;
     // End of variables declaration//GEN-END:variables

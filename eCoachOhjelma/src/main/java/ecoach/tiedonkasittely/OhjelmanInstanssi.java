@@ -8,7 +8,7 @@ import static ecoach.tiedonkasittely.TiedostonKasittelija.lueTiedostosta;
 import java.io.Serializable;
 
 /**
- * Luo ohjelmasta instanssin, varmistan vain yhden lähteen tiedolle. Tämän
+ * Luo ohjelmasta instanssin, varmistaen vain yhden lähteen tiedolle. Tämän
  * avulla tietoa siirretään ohjelman sisällä eri olioiden kesken.
  */
 public class OhjelmanInstanssi implements Serializable {
@@ -41,6 +41,12 @@ public class OhjelmanInstanssi implements Serializable {
         }
     }
 
+    /**
+     * Metodi joka palauttaa piilotetussa konstruktorissa määriteltävän
+     * instanssin.
+     *
+     * @return ohjelmanInstanssi.
+     */
     public static OhjelmanInstanssi getInstance() {
 
         if (ohjelmanInstanssi == null) {
@@ -75,6 +81,10 @@ public class OhjelmanInstanssi implements Serializable {
         return suoritusTilasto;
     }
 
+    /**
+     * Metodi joka tallentaa ohjelman hyödyntäen OhjelmanTiedot luokkaa ja
+     * TiedostonKasittelija luokkaa.
+     */
     public void tallennaOhjelma() {
 
         OhjelmanTiedot ohjelmanTiedot = new OhjelmanTiedot(

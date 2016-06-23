@@ -6,6 +6,12 @@ import ecoach.logiikka.henkilo.OhjaajaLista;
 import ecoach.logiikka.henkilo.PelaajaLista;
 import java.io.Serializable;
 
+/**
+ * Luokka joka luo olion joka sisältää ohjelman kaikki listat. Luokalle annetaan
+ * syötteenä listat jotta tämä voi "kopioida" ne itseensä silää hetkellä.
+ *
+ * @author Jontsu
+ */
 public class OhjelmanTiedot implements Serializable {
 
     private PelaajaLista pelaajatIlmanOhjaajaa;
@@ -14,6 +20,15 @@ public class OhjelmanTiedot implements Serializable {
     private HarjoitusLista harjoitusLista;
     private SuoritusTilasto suoritusTilasto;
 
+    /**
+     * Luokan konstruktori jolle annetaan syötteenä ohjelman kaikki listat.
+     *
+     * @param pelaajatIlmanOhjaajaa PelaajaLista syöte.
+     * @param kaikkiPelaajat PelaajaLista syöte.
+     * @param ohjaajaLista OhjaajaLista syöte.
+     * @param harjoitusLista HarjoitusLista syöte.
+     * @param suoritusTilasto SuoritusTilasto syöte.
+     */
     public OhjelmanTiedot(PelaajaLista pelaajatIlmanOhjaajaa,
             PelaajaLista kaikkiPelaajat, OhjaajaLista ohjaajaLista,
             HarjoitusLista harjoitusLista, SuoritusTilasto suoritusTilasto) {

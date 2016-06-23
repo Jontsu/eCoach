@@ -3,14 +3,16 @@ package ecoach.kayttoliittyma;
 import ecoach.tiedonkasittely.OhjelmanInstanssi;
 import ecoach.logiikka.henkilo.*;
 
+/**
+ * Sisäänkirjautumissivu joka ohjaa joko Pelaajan tai Ohjaajan
+ * käyttöliittymäsivulle.
+ *
+ * @author Jontsu
+ */
 public class SisaanKirjautumissivu extends javax.swing.JFrame {
-
-    Henkilo apuHenkilo;
 
     public SisaanKirjautumissivu() {
         initComponents();
-        OhjelmanInstanssi.getInstance();
-        apuHenkilo = null;
     }
 
     @SuppressWarnings("unchecked")
@@ -121,42 +123,78 @@ public class SisaanKirjautumissivu extends javax.swing.JFrame {
 
     private void kirjauduNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kirjauduNappiActionPerformed
 
+        // ohjelman totaalisen hajoamisen takia jouduin palauttaan tämän aikaisemman 
+        // version ja aikarajoitteiden takia en ehtinyt refaktoroimaan uudestaan tätä 
+        // kohtaa, siten miten irc:issä neuvoit (yksi versioista mitä tarkastelit 
+        // olikin jo refaktoroitu)
+        OhjelmanInstanssi.getInstance();
+
         if (pelaajaNappi.isSelected()) {
 
-            System.out.println(OhjelmanInstanssi.getInstance().getKaikkiPelaajat().onkoPelaajaListassa((Pelaaja) apuHenkilo));
+            for (int i = 0; i < OhjelmanInstanssi.getInstance().getKaikkiPelaajat().getPelaajaLista().size(); i++) {
 
-            if (OhjelmanInstanssi.getInstance().getKaikkiPelaajat().onkoPelaajaListassa((Pelaaja) apuHenkilo) == true) {
-                new PelaajanPaasivu((Pelaaja) apuHenkilo).setVisible(true);
-                super.dispose();
+                Pelaaja apuPelaaja = OhjelmanInstanssi.getInstance().getKaikkiPelaajat().getPelaajaLista().get(i);
+
+                if (apuPelaaja.getNimike().equals(nimikeText.getText()) && apuPelaaja.getEmail().equals(emailText.getText())) {
+                    new PelaajanPaasivu(apuPelaaja).setVisible(true);
+                    super.dispose();
+                }
             }
 
         } else if (ohjaajaNappi.isSelected()) {
 
-            if (OhjelmanInstanssi.getInstance().getOhjaajaLista().onkoOhjaajaListassa((Ohjaaja) apuHenkilo) == true) {
-                new OhjaajanPaasivu((Ohjaaja) apuHenkilo).setVisible(true);
-                super.dispose();
+            for (int i = 0; i < OhjelmanInstanssi.getInstance().getOhjaajaLista().getOhjaajaLista().size(); i++) {
+
+                Ohjaaja apuOhjaaja = OhjelmanInstanssi.getInstance().getOhjaajaLista().getOhjaajaLista().get(i);
+
+                if (apuOhjaaja.getNimike().equals(nimikeText.getText()) && apuOhjaaja.getEmail().equals(emailText.getText())) {
+                    new OhjaajanPaasivu(apuOhjaaja).setVisible(true);
+                    super.dispose();
+                }
             }
         }
     }//GEN-LAST:event_kirjauduNappiActionPerformed
 
     private void uusiKayttajaNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uusiKayttajaNappiActionPerformed
 
+        // ohjelman totaalisen hajoamisen takia jouduin palauttaan tämän aikaisemman 
+        // version ja aikarajoitteiden takia en ehtinyt refaktoroimaan uudestaan tätä 
+        // kohtaa, siten miten irc:issä neuvoit (yksi versioista mitä tarkastelit 
+        // olikin jo refaktoroitu)
+        int apuTotuusArvo = 0;
+
         if (pelaajaNappi.isSelected()) {
 
-            if (OhjelmanInstanssi.getInstance().getKaikkiPelaajat().onkoPelaajaListassa((Pelaaja) apuHenkilo) == false) {
-                OhjelmanInstanssi.getInstance().getKaikkiPelaajat().lisaaPelaaja((Pelaaja) apuHenkilo);
-                OhjelmanInstanssi.getInstance().getPelaajatIlmanOhjaajaa().lisaaPelaaja((Pelaaja) apuHenkilo);
+            for (int i = 0; i < OhjelmanInstanssi.getInstance().getKaikkiPelaajat().getPelaajaLista().size(); i++) {
 
-                new PelaajanPaasivu((Pelaaja) apuHenkilo).setVisible(true);
+                if (nimikeText.getText().equals(OhjelmanInstanssi.getInstance().getKaikkiPelaajat().getPelaajaLista().get(i).getNimike())) {
+                    apuTotuusArvo = 1;
+                }
+            }
+
+            if (apuTotuusArvo == 0) {
+                Pelaaja apuPelaaja = new Pelaaja(nimikeText.getText(), emailText.getText());
+                OhjelmanInstanssi.getInstance().getKaikkiPelaajat().lisaaPelaaja(apuPelaaja);
+                OhjelmanInstanssi.getInstance().getPelaajatIlmanOhjaajaa().lisaaPelaaja(apuPelaaja);
+
+                new PelaajanPaasivu(apuPelaaja).setVisible(true);
                 super.dispose();
             }
 
         } else if (ohjaajaNappi.isSelected()) {
 
-            if (OhjelmanInstanssi.getInstance().getOhjaajaLista().onkoOhjaajaListassa((Ohjaaja) apuHenkilo) == false) {
-                OhjelmanInstanssi.getInstance().getOhjaajaLista().lisaaOhjaaja((Ohjaaja) apuHenkilo);
+            for (int i = 0; i < OhjelmanInstanssi.getInstance().getOhjaajaLista().getOhjaajaLista().size(); i++) {
 
-                new OhjaajanPaasivu((Ohjaaja) apuHenkilo).setVisible(true);
+                if (nimikeText.getText().equals(OhjelmanInstanssi.getInstance().getOhjaajaLista().getOhjaajaLista().get(i).getNimike())) {
+                    apuTotuusArvo = 1;
+                }
+            }
+
+            if (apuTotuusArvo == 0) {
+                Ohjaaja apuOhjaaja = new Ohjaaja(nimikeText.getText(), emailText.getText());
+                OhjelmanInstanssi.getInstance().getOhjaajaLista().lisaaOhjaaja(apuOhjaaja);
+
+                new OhjaajanPaasivu(apuOhjaaja).setVisible(true);
                 super.dispose();
             }
         }
@@ -164,18 +202,18 @@ public class SisaanKirjautumissivu extends javax.swing.JFrame {
 
     private void ohjaajaNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ohjaajaNappiActionPerformed
 
-        apuHenkilo = new Ohjaaja(nimikeText.getText(), emailText.getText());
-        OhjelmanInstanssi.getInstance().getOhjaajaLista().getOhjaajaListasta((Ohjaaja) apuHenkilo);
-        ohjaajaNappi.setSelected(true);
-        pelaajaNappi.setSelected(false);
+        if (pelaajaNappi.isSelected()) {
+            ohjaajaNappi.setSelected(true);
+            pelaajaNappi.setSelected(false);
+        }
     }//GEN-LAST:event_ohjaajaNappiActionPerformed
 
     private void pelaajaNappiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pelaajaNappiActionPerformed
 
-        apuHenkilo = new Pelaaja(nimikeText.getText(), emailText.getText());
-        OhjelmanInstanssi.getInstance().getKaikkiPelaajat().getPelaajaListasta((Pelaaja) apuHenkilo);
-        pelaajaNappi.setSelected(true);
-        ohjaajaNappi.setSelected(false);
+        if (ohjaajaNappi.isSelected()) {
+            pelaajaNappi.setSelected(true);
+            ohjaajaNappi.setSelected(false);
+        }
     }//GEN-LAST:event_pelaajaNappiActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

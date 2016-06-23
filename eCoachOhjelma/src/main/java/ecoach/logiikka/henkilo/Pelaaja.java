@@ -41,9 +41,4 @@ public class Pelaaja extends Henkilo implements Serializable {
 
         return this.harjoitusLista;
     }
-
-    @Override
-    public boolean equals(Object olio) {
-        return super.equals(olio);
-    }
 }

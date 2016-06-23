@@ -43,18 +43,6 @@ public class HarjoitusLista implements Serializable {
         this.harjoituslista.remove(harjoitus);
     }
 
-    public Harjoitus getHarjoitusListasta(Harjoitus harjoitus) {
-
-        for (int i = 0; i < this.harjoituslista.size(); i++) {
-
-            if (this.harjoituslista.get(i).equals(harjoitus)) {
-                return harjoitus;
-            }
-        }
-
-        return null;
-    }
-
     public ArrayList<Harjoitus> getHarjoitusLista() {
 
         return this.harjoituslista;

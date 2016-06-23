@@ -35,15 +35,30 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="otsikkoLoL" max="32767" attributes="0"/>
                   <Component id="kuvauksenPaneeli" alignment="1" max="32767" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="harjoitusValikkoCBnOtsikko" pref="175" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                      <Component id="harjoitusValikkoCBox" min="-2" pref="423" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" attributes="0">
                       <Component id="linkkiLabel" min="-2" pref="407" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="suoritusNappi" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="379" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="harjoitusValikkoCBnOtsikko" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="harjoituksenLinkkiLbl" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="harjoitusValikkoCBox" pref="423" max="32767" attributes="0"/>
+                          <Component id="harjoituksenLinkkiTxt" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="arvosanaLabel" min="-2" max="-2" attributes="0"/>
@@ -51,12 +66,8 @@
                       <Component id="arvosanaTxt" min="-2" pref="60" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="keskiarvoLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jTextField2" min="-2" pref="60" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="maaraLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="maaraTxt" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="keskiarvoTxt" min="-2" pref="60" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -73,18 +84,23 @@
                   <Component id="harjoitusValikkoCBox" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   <Component id="harjoitusValikkoCBnOtsikko" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="kuvauksenPaneeli" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="keskiarvoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="arvosanaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="maaraLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="arvosanaTxt" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="jTextField2" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="maaraTxt" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-              </Group>
               <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="harjoituksenLinkkiLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="harjoituksenLinkkiTxt" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="kuvauksenPaneeli" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="arvosanaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="arvosanaTxt" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                  <Component id="keskiarvoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="keskiarvoTxt" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="linkkiLabel" pref="35" max="32767" attributes="0"/>
                   <Component id="suoritusNappi" max="32767" attributes="0"/>
@@ -109,9 +125,6 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="linkkiLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Lis&#xe4;&#xe4; t&#xe4;h&#xe4;n suoritus nauhoituksen linkki"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="linkkiLabelActionPerformed"/>
       </Events>
@@ -157,7 +170,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="keskiarvoLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Pelaajien keskiarvo:"/>
+        <Property name="text" type="java.lang.String" value="Pelaajien kaikkien harjoitusten suoritusten keskiarvo:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="arvosanaLabel">
@@ -165,16 +178,27 @@
         <Property name="text" type="java.lang.String" value="Arvosana:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="maaraLabel">
+    <Component class="javax.swing.JTextField" name="arvosanaTxt">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="arvosanaTxtActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="keskiarvoTxt">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Suoritusten m&#xe4;&#xe4;r&#xe4;:"/>
+        <Property name="text" type="java.lang.String" value="Suorituksen nauhoituksen linkki:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="arvosanaTxt">
+    <Component class="javax.swing.JLabel" name="harjoituksenLinkkiLbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Harjoituksen linkki:"/>
+      </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField2">
-    </Component>
-    <Component class="javax.swing.JTextField" name="maaraTxt">
+    <Component class="javax.swing.JTextField" name="harjoituksenLinkkiTxt">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="harjoituksenLinkkiTxtActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

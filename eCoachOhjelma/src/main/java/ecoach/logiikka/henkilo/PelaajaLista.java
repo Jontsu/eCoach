@@ -41,30 +41,6 @@ public class PelaajaLista implements Serializable {
         this.pelaajalista.remove(pelaaja);
     }
 
-    public Pelaaja getPelaajaListasta(Pelaaja pelaaja) {
-
-        for (int i = 0; i < this.pelaajalista.size(); i++) {
-
-            if (this.pelaajalista.get(i).equals(pelaaja)) {
-                return pelaaja;
-            }
-        }
-
-        return null;
-    }
-
-    public boolean onkoPelaajaListassa(Pelaaja pelaaja) {
-
-        for (int i = 0; i < this.pelaajalista.size(); i++) {
-
-            if (this.pelaajalista.get(i).equals(pelaaja)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     public ArrayList<Pelaaja> getPelaajaLista() {
 
         return this.pelaajalista;

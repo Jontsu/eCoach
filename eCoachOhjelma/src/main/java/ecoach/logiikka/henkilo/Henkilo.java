@@ -39,27 +39,4 @@ public class Henkilo implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    @Override
-    public boolean equals(Object olio) {
-        if (olio == null) {
-            return false;
-        }
-
-        if (getClass() != olio.getClass()) {
-            return false;
-        }
-
-        Henkilo verrattava = (Henkilo) olio;
-
-        if (this.nimike == null || !this.nimike.equals(verrattava.getNimike())) {
-            return false;
-        }
-
-        if (this.email != verrattava.getEmail()) {
-            return false;
-        }
-
-        return true;
-    }
 }

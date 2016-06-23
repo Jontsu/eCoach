@@ -8,5 +8,5 @@
     <suppress files="HarjoituksenLuominen.java" checks="[a-zA-Z0-9]*"/>
     <suppress files="OhjaajanPaasivu.java" checks="[a-zA-Z0-9]*"/>
     <suppress files="PelaajanPaasivu.java" checks="[a-zA-Z0-9]*"/>
-    <suppress files="Sisaankirjautumissivu.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="SisaanKirjautumissivu.java" checks="[a-zA-Z0-9]*"/>
 </suppressions>

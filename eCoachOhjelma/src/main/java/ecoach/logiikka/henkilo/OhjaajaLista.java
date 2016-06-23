@@ -31,30 +31,6 @@ public class OhjaajaLista implements Serializable {
         this.ohjaajalista.add(ohjaaja);
     }
 
-    public Ohjaaja getOhjaajaListasta(Ohjaaja ohjaaja) {
-
-        for (int i = 0; i < this.ohjaajalista.size(); i++) {
-
-            if (this.ohjaajalista.get(i).equals(ohjaaja)) {
-                return ohjaaja;
-            }
-        }
-
-        return null;
-    }
-
-    public boolean onkoOhjaajaListassa(Ohjaaja ohjaaja) {
-
-        for (int i = 0; i < this.ohjaajalista.size(); i++) {
-
-            if (this.ohjaajalista.get(i).equals(ohjaaja)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     public ArrayList<Ohjaaja> getOhjaajaLista() {
 
         return this.ohjaajalista;

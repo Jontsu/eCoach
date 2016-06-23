@@ -38,9 +38,4 @@ public class Ohjaaja extends Henkilo implements Serializable {
 
         return this.pelaajalista;
     }
-    
-    @Override
-    public boolean equals(Object olio) {
-        return super.equals(olio);
-    }
 }

@@ -80,23 +80,4 @@ public class Harjoitus implements Serializable {
 
         return this.suoritus;
     }
-
-    @Override
-    public boolean equals(Object olio) {
-        if (olio == null) {
-            return false;
-        }
-
-        if (getClass() != olio.getClass()) {
-            return false;
-        }
-
-        Harjoitus verrattava = (Harjoitus) olio;
-
-        if (this.nimi == null || !this.nimi.equals(verrattava.getNimi())) {
-            return false;
-        }
-
-        return true;
-    }
 }
