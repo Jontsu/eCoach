@@ -31,7 +31,9 @@
 
 ![Luokkakaavio](Luokkakaavio.png)
 
+
 **Rakennekuvaus**
+
 Ohjelma on jaoteltu kolmeen ylätason pakkaukseen, logiikka, käyttöliittymä ja tiedonkäsittely. Logiikka pakkaukseen kuuluu henkilö ja harjoitus pakkaus. 
 
 Henkilö pakkauksessa on luokat Henkilö, Pelaaja, Ohjaaja, PelaajaLista ja OhjaajaLista. Pelaaja ja Ohjaaja luokat periytyvät Henkilö luokasta joka määrittää parametrit nimike ja email. Pelaaja ja Ohjaaja luokassa on periytyneiden parametrien lisäksi määritettynä HarjoitusLista Pelaajalle ja PelaajaLista Ohjaajalle. Ohjaaja on OhjaajaListan parametri.
